@@ -1,0 +1,1180 @@
+fileFormatVersion: 2
+guid: e3b9b6c82d9fb854484746f25e5eeccd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: granade_second_0
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1941
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b21833c5260514fb6368ebc25a1638
+      internalID: 1076099029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_1
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1939
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d486dd1a86489984dbe43097c3fb8995
+      internalID: -636190900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_2
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 1883
+        width: 140
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 547061ddaefa0684f93685cdd1a6940e
+      internalID: 115262509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_3
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 1876
+        width: 151
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6bc243595449f4990e280a73b0c19d
+      internalID: -1018832971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_4
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 1827
+        width: 158
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa82d0bbb5043424e9ab71899e53707d
+      internalID: -1682596249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_5
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 1823
+        width: 167
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c268180b3c8c54f96063758394edd4
+      internalID: 863212790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_6
+      rect:
+        serializedVersion: 2
+        x: 2386
+        y: 1823
+        width: 171
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d3e32a72be6d6840923f42014044627
+      internalID: -955820182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_7
+      rect:
+        serializedVersion: 2
+        x: 2824
+        y: 1827
+        width: 201
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b39bb184ce734439a796d1594f4fc8
+      internalID: 24341805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_8
+      rect:
+        serializedVersion: 2
+        x: 3263
+        y: 1811
+        width: 210
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b2f83b2f6bcf146951fb3f35d91f51
+      internalID: 231168349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_9
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1904
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78dfae2ee4422aa4781cdee80f4c051b
+      internalID: -1530000914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_10
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 1352
+        width: 277
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6d21f160400e24f8c737f68753aecf
+      internalID: 449848845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_11
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 1347
+        width: 241
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453a0cd872f3985418c52b042c91cc7b
+      internalID: 2051260812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_12
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 1627
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28085aa6cb1858d4b8ee2267d7f5c950
+      internalID: -1357977636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_13
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1345
+        width: 241
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea5a69a16e3e3114fb383f301e77fa39
+      internalID: 784598754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_14
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 1333
+        width: 253
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3e11d2c632f7347b9c1a5bc2c7a79d
+      internalID: -1426641871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_15
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 1347
+        width: 267
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa76ca5f2f174dd468638abded24e91b
+      internalID: -1526330560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_16
+      rect:
+        serializedVersion: 2
+        x: 2369
+        y: 1331
+        width: 258
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a24176f60972c4d8fa390cda0e46cb
+      internalID: 1900734655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_17
+      rect:
+        serializedVersion: 2
+        x: 2812
+        y: 1319
+        width: 274
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96483a476e7321a4d9eed6c70a7a95e4
+      internalID: 2066524066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_18
+      rect:
+        serializedVersion: 2
+        x: 3277
+        y: 1310
+        width: 264
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24584ad9e61e824bb5c84ff4124d55f
+      internalID: -1159238031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_19
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 892
+        width: 271
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3356323d952c4948bc197b0a6a0c793
+      internalID: 580401020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_20
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 906
+        width: 272
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762edfa17c009ab4b9a6c75d0a28fb0a
+      internalID: 364147403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_21
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 917
+        width: 270
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d726190c2b56c46a1cb4beddd70fcb
+      internalID: -1122336090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_22
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 1096
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d12c47aca0de474ab4857fa3e31a37f
+      internalID: 1844456019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_23
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 913
+        width: 268
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dfa313b2300c2d4ab91bbf99d9a9ecb
+      internalID: -618309801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_24
+      rect:
+        serializedVersion: 2
+        x: 1910
+        y: 915
+        width: 256
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cafb53b68e2cdd4fba25f34af7fe612
+      internalID: -1126047536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_25
+      rect:
+        serializedVersion: 2
+        x: 2369
+        y: 938
+        width: 202
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4bc4fd6fada1ed458ce254a024ee5a0
+      internalID: -2095125956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_26
+      rect:
+        serializedVersion: 2
+        x: 2819
+        y: 931
+        width: 221
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f28e3658ad8fc848ac02523440b3ff3
+      internalID: -847469638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_27
+      rect:
+        serializedVersion: 2
+        x: 3281
+        y: 911
+        width: 230
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2e7ae94b55c0140823c8e80d69d560
+      internalID: 775204938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_28
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 447
+        width: 250
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217fd649843d45d4ebcd6539ae382cff
+      internalID: 2146680670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_29
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 442
+        width: 250
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1891332ca8a5ef43a17b2a78ffaede6
+      internalID: -1472398859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_30
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 490
+        width: 202
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b8b5036d4503940b5d1faba779b1b9
+      internalID: 28009023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_31
+      rect:
+        serializedVersion: 2
+        x: 2390
+        y: 484
+        width: 211
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970fd13ebc481b0428c36d245c5ee46a
+      internalID: 1835350465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_32
+      rect:
+        serializedVersion: 2
+        x: 2827
+        y: 484
+        width: 229
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 401fb2253477a2c4f8a56e7a13a36f3e
+      internalID: 763948549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_33
+      rect:
+        serializedVersion: 2
+        x: 3263
+        y: 486
+        width: 252
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1f7f6db19fcc446975fa5aafd0e5cb
+      internalID: 1281429670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_34
+      rect:
+        serializedVersion: 2
+        x: 3439
+        y: 704
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4024a7e6c5f69841b6f3e15c247c00e
+      internalID: 1841303256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_35
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 424
+        width: 216
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f770177a377b9924f8dbf97b9aabfcdd
+      internalID: -227945238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_36
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 482
+        width: 179
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f2064626f9fe0e4288c10dfba91198c
+      internalID: 805821897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_37
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 40
+        width: 266
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74587df47a18b034083f87222ee06cad
+      internalID: -1010951554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_38
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 71
+        width: 239
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e78205d090dd8d40ba76d9454d3b8fd
+      internalID: 992202128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_39
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 82
+        width: 231
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08527c6cdce16d24bbe810a209685f8f
+      internalID: 412346682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_40
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 129
+        width: 142
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 571167752611e6644a2a6fac79d4c2fa
+      internalID: 627587232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_41
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 205
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e216762a897fa9747a0b474a1b21161b
+      internalID: -140185428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_42
+      rect:
+        serializedVersion: 2
+        x: 1688
+        y: 152
+        width: 41
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eea7e84399487942b2f30a9a51c148f
+      internalID: 251229608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_43
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 177
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1751c67793dbb4b9842bc4818957fb
+      internalID: 595356262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_44
+      rect:
+        serializedVersion: 2
+        x: 2017
+        y: 157
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0998fba13627d834192bc02867cbe841
+      internalID: -1778372936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_45
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 133
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8860eb6711fd83449325458477ab019
+      internalID: 402702517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: granade_second_46
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 91
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46793fea88ecd914eb401df88bbf9dc2
+      internalID: 1543586706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0ebb8e5bb18cc9e419b4d12b52dab7ad
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      granade_second_3: -1018832971
+      granade_second_21: -1122336090
+      granade_second_15: -1526330560
+      granade_second_28: 2146680670
+      granade_second_32: 763948549
+      granade_second_25: -2095125956
+      granade_second_5: 863212790
+      granade_second_10: 449848845
+      granade_second_20: 364147403
+      granade_second_33: 1281429670
+      granade_second_11: 2051260812
+      granade_second_6: -955820182
+      granade_second_27: 775204938
+      granade_second_44: -1778372936
+      granade_second_26: -847469638
+      granade_second_2: 115262509
+      granade_second_46: 1543586706
+      granade_second_16: 1900734655
+      granade_second_24: -1126047536
+      granade_second_13: 784598754
+      granade_second_0: 1076099029
+      granade_second_9: -1530000914
+      granade_second_43: 595356262
+      granade_second_45: 402702517
+      granade_second_4: -1682596249
+      granade_second_37: -1010951554
+      granade_second_34: 1841303256
+      granade_second_35: -227945238
+      granade_second_18: -1159238031
+      granade_second_31: 1835350465
+      granade_second_38: 992202128
+      granade_second_14: -1426641871
+      granade_second_41: -140185428
+      granade_second_17: 2066524066
+      granade_second_39: 412346682
+      granade_second_19: 580401020
+      granade_second_23: -618309801
+      granade_second_1: -636190900
+      granade_second_22: 1844456019
+      granade_second_8: 231168349
+      granade_second_29: -1472398859
+      granade_second_30: 28009023
+      granade_second_42: 251229608
+      granade_second_7: 24341805
+      granade_second_12: -1357977636
+      granade_second_36: 805821897
+      granade_second_40: 627587232
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
