@@ -15,14 +15,18 @@ TagManager:
   - ZombieFakeTraget
   - Zombie
   - ZombieRange
+  - Nuke
+  - Instakill
+  - MaxAmmo
+  - Laststand_player
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Node
   - Water
   - UI
-  - 
+  - Slope
   - 
   - 
   - 

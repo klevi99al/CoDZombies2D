@@ -1,126 +1,67 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using GizmoDebugger;
 
 public class ZombieTraverse : MonoBehaviour
 {
-    public string direction;
-    public Transform zombiesHolder;
-    public GameObject teleportationEffect;
-    public AudioClip crawlerTraverseSound;
+    private Transform targetNode;
 
-    private Transform gotoPosition;
-    private bool animPlayedOnce = false;
-    private bool crawlerCanTeleport = true;
-    private float moveSpeedToTraverse = 5f;
+    public enum TRAVERSE_DIRECTION
+    {
+        LEFT,
+        RIGHT
+    }
+
+    private TRAVERSE_DIRECTION DIRECTION;
 
     private void Start()
     {
-        gotoPosition = transform.GetChild(0);
+        GetComponent<MeshRenderer>().enabled = false;
+        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+
+        targetNode = transform.GetChild(0);
+        
+        if(transform.position.x < targetNode.transform.position.x)
+        {
+            DIRECTION = TRAVERSE_DIRECTION.RIGHT;
+        }
+        else
+        {
+            DIRECTION = TRAVERSE_DIRECTION.LEFT;
+        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Zombie"))
+        string tag = other.gameObject.tag.ToLower();
+        if (tag.Equals("zombie"))
         {
-            if ((direction.ToLower().Equals("right") && other.transform.rotation.y == 0) || (direction.ToLower().Equals("left") && other.transform.rotation.y != 0))
+            if (other.transform.rotation.y == 0 && DIRECTION.Equals(TRAVERSE_DIRECTION.RIGHT) || (other.transform.rotation.y != 0 && DIRECTION.Equals(TRAVERSE_DIRECTION.LEFT)))
             {
-                if (other.gameObject.GetComponent<Zombie_Movements>().isCrawler == false)
-                {
-                    other.gameObject.GetComponent<Zombie_Movements>().zombieAnimator.Play("zombie_traverse");
-                    animPlayedOnce = true;
-                }
-                //StartCoroutine(MoveZombieToGoal(other.gameObject, gotoPosition.position));
+                ZombieMovements zombieMovements = other.gameObject.GetComponent<ZombieMovements>();
+                zombieMovements.lastTraversalDirection = DIRECTION;
+                zombieMovements.StartZombieTraversalMovement(targetNode.position);
             }
         }
-        if (other.gameObject.CompareTag("Player"))
+        if (tag.Equals("player"))
         {
             Physics.IgnoreCollision(transform.GetComponent<Collider>(), other.gameObject.GetComponent<Collider>());
         }
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.CompareTag("Zombie") && animPlayedOnce == false)
-        {
-            if (other.transform.GetChild(0).GetComponent<Zombie_Damage_and_Extras>().zombieTouchingTarget == false)
-            {
-                if ((direction.ToLower().Equals("right") && other.transform.rotation.y == 0) || (direction.ToLower().Equals("left") && other.transform.rotation.y != 0))
-                {
-                    if (other.gameObject.GetComponent<Zombie_Movements>().isCrawler == false)
-                    {
-                        other.gameObject.GetComponent<Zombie_Movements>().zombieAnimator.Play("zombie_traverse");
-                        animPlayedOnce = true;
-                    }
-                    StartCoroutine(MoveZombieToGoal(other.gameObject, gotoPosition.position));
-                }
-            }
-        }
-    }
 
-    private void OnCollisionExit(Collision other)
+    [ExecuteInEditMode]
+    private void OnDrawGizmos()
     {
-        if (other.gameObject.CompareTag("Zombie"))
-        {
-            other.transform.GetChild(0).GetComponent<Zombie_Damage_and_Extras>().zombieTouchingTarget = false;
-            animPlayedOnce = false;
-            if (other.gameObject.GetComponent<Zombie_Movements>().isCrawler == false)
-            {
-                other.gameObject.GetComponent<Zombie_Movements>().zombieAnimator.Play("zombie_chase");
-            }
-        }
-    }
+        GameObject startPoint = transform.gameObject;
+        Vector3 endPoint = transform.GetChild(0).transform.position;
 
-    private IEnumerator MoveZombieToGoal(GameObject zombie, Vector3 goal)
-    {
-        if (zombie.GetComponent<Zombie_Movements>().isCrawler == false)
-        {
-            Debug.Log("called");
-            Zombie_Damage_and_Extras child = zombie.transform.GetChild(0).GetComponent<Zombie_Damage_and_Extras>();
-            //while (zombie.gameObject != null && Vector3.Distance(zombie.transform.position, goal) >= 0.2f)
-            while (zombie.gameObject != null && child.traverseCheck == false)
-            {
-                Debug.Log("traversing");
-                zombie.transform.position = Vector3.Lerp(zombie.transform.position, goal, moveSpeedToTraverse * Time.deltaTime);
-                yield return null;
-            }
-            animPlayedOnce = false;
-            child.traverseCheck = false;
-        }
-        else
-        {
-            if (crawlerCanTeleport == true)
-            {
-                crawlerCanTeleport = false;
-                StartCoroutine(DoZombieCrawlerTeleportation(zombie, goal));
-            }
-        }
-    }
+        Gizmos.color = Color.yellow;
 
-    private IEnumerator DoZombieCrawlerTeleportation(GameObject zombie, Vector3 goal)
-    {
-        AudioSource audio = zombie.GetComponentInChildren<AudioSource>();
-        GameObject effect = Instantiate(teleportationEffect, zombie.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-        Destroy(effect, 0.3f);
-        audio.PlayOneShot(crawlerTraverseSound);
-        zombie.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.5f);
-        zombie.transform.position = goal;
-        GameObject effectAfter = Instantiate(teleportationEffect, zombie.transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-        Destroy(effectAfter, 0.3f);
-        audio.PlayOneShot(crawlerTraverseSound);
-        zombie.GetComponent<SpriteRenderer>().enabled = true;
-        Destroy(effect);
-        StartCoroutine(ReActivateTeleportation());
-    }
+        Vector3 direction = (endPoint - startPoint.transform.position).normalized * Vector3.Distance(startPoint.transform.position, endPoint);
 
-    private IEnumerator ReActivateTeleportation()
-    {
-        // Since the crawler would teleport, it would also enter through the oncollisionenter function, and it would get stuck teleporting right after the
-        // first teleportation was done, and get stuck in a loop, with this WAIT, we are sure that it would already enter the oncollision enter and when the bool
-        // of the crawler teleportation switches to true again, it means that the crawler would already be in the oncollisionstay, and not get teleported since we dont call
-        // the teleportation from there anyway
-        yield return new WaitForSeconds(1f);
-        crawlerCanTeleport = true;
+        // starting position, direction, arrow head length, arrow head angle 
+        RayGizmoDebugger.DrawGizmoTowardsTarget2D(startPoint.transform.position, direction, 0.3f, 30);
     }
 }

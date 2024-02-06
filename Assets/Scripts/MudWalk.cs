@@ -18,8 +18,8 @@ public class MudWalk : MonoBehaviour
         else if (collision.gameObject.CompareTag("Zombie"))
         {
             GameObject zombie = collision.gameObject;
-            zombieTempSpeed = zombie.GetComponent<Zombie_Movements>().zombieSpeed;
-            zombie.GetComponent<Zombie_Movements>().zombieSpeed /= 2;
+            zombieTempSpeed = zombie.GetComponent<ZombieMovements>().zombieSpeed;
+            zombie.GetComponent<ZombieMovements>().zombieSpeed /= 2;
         }
     }
 
@@ -33,7 +33,7 @@ public class MudWalk : MonoBehaviour
         else if (collision.gameObject.CompareTag("Zombie"))
         {
             GameObject zombie = collision.gameObject;
-            zombie.GetComponent<Zombie_Movements>().zombieSpeed = zombieTempSpeed;
+            zombie.GetComponent<ZombieMovements>().zombieSpeed = zombieTempSpeed;
         }
     }
 }

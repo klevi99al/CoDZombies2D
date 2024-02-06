@@ -6,9 +6,14 @@ public class ZombieTraverseArrival : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Zombie"))
+        string tag = other.gameObject.tag.ToLower();
+        if (tag.Equals("zombie"))
         {
-            other.transform.GetChild(0).GetComponent<Zombie_Damage_and_Extras>().traverseCheck = true;
+            other.GetComponent<ZombieMovements>().StopTraversalMovement();
+        }
+        if (tag.Equals("player"))
+        {
+            Physics.IgnoreCollision(transform.GetComponent<Collider>(), other.gameObject.GetComponent<Collider>());
         }
     }
 }

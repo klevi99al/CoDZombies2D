@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource footAudioSource;
 
     [Header("Extras")]
-    [SerializeField] private LayerMask groundLayer;
+    //[SerializeField] private LayerMask groundLayer;
     public float extraHight;
     public float slideForce = 1400f;
     public GameObject levelManager;
@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
     private int playerLastLayerTouched = -1;
     private bool canJump = false;
-    private bool playerInLastStand = false;
     private string directionPointed = "";
     private BoxCollider boxCollider;
 
@@ -382,7 +381,7 @@ public class PlayerMovement : MonoBehaviour
         Audios script = levelManager.GetComponent<Audios>();
         while (true)
         {
-            if (!playerInLastStand)
+            if (!playerInLaststand)
             {
                 List<AudioClip> type = new();
                 int soundIndex = 0;

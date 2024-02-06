@@ -43,9 +43,9 @@ public class GrenadeExplosion : MonoBehaviour
                 if (zombieHealthScript.zombieHealth > 0 && zombieHealthScript.zombieHealth < zombieTenPercentageHealth)
                 {
                     zombieHealthScript.zombieIsCrawler = true;
-                    zombieHealthScript.transform.parent.GetComponent<Zombie_Movements>().isCrawler = true;
-                    zombieHealthScript.transform.parent.GetComponent<Zombie_Movements>().zombieAnimator.SetBool("ShouldCrawl", true);
-                    zombieHealthScript.transform.parent.GetComponent<Zombie_Movements>().zombieAnimator.SetBool("IsCrawler", true);
+                    zombieHealthScript.transform.parent.GetComponent<ZombieMovements>().isCrawler = true;
+                    zombieHealthScript.transform.parent.GetComponent<ZombieMovements>().zombieAnimator.SetBool("ShouldCrawl", true);
+                    zombieHealthScript.transform.parent.GetComponent<ZombieMovements>().zombieAnimator.SetBool("IsCrawler", true);
                     zombieHealthScript.transform.GetComponent<CapsuleCollider>().height /= 2;
                     zombieHealthScript.transform.GetComponent<CapsuleCollider>().center /= 2;
                     zombieHealthScript.transform.parent.GetComponent<CapsuleCollider>().height /= 2;

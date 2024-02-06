@@ -13,6 +13,11 @@ public class LevelManager : MonoBehaviour
     public AudioSource source;
     public static List<int> zoneNumbers = new();
 
+
+    [Header("General effects and audios")]
+    public AudioClip crawlerTraverseSound;
+    public GameObject teleportationEffect;
+
     private Audios audios;
 
     private void Start()

@@ -33,7 +33,7 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
     [HideInInspector] public float zombieHealth;
     [HideInInspector] public float zombieMaxHealth;
 
-    private Zombie_Movements zombieScript;
+    private ZombieMovements zombieScript;
     private AudioSource audioSource;
     private int lastLayerTouched = -1;
     private bool zombieKillCounted = false;
@@ -59,7 +59,7 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
         //Debug.Log(zombieHealth);
         //zombieHealth = (StaticVariables.roundNumber * 50) + 50;
         zombieMaxHealth = zombieHealth;
-        zombieScript = transform.parent.GetComponent<Zombie_Movements>();
+        zombieScript = transform.parent.GetComponent<ZombieMovements>();
         audioSource = transform.GetComponent<AudioSource>();
 
         StartCoroutine(PlayZombieMouthSounds());
@@ -121,7 +121,7 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
         if (tag.Equals("Player"))
         {
 
-            if (collision.gameObject == transform.parent.GetComponent<Zombie_Movements>().zombieTarget.gameObject)
+            if (collision.gameObject == transform.parent.GetComponent<ZombieMovements>().zombieTarget.gameObject)
             {
                 zombieTouchingTarget = true;
             }
@@ -361,7 +361,7 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
         string tag = collision.gameObject.tag;
         if (tag.Equals("Player"))
         {
-            if (collision.gameObject == transform.parent.GetComponent<Zombie_Movements>().zombieTarget.gameObject)
+            if (collision.gameObject == transform.parent.GetComponent<ZombieMovements>().zombieTarget.gameObject)
             {
                 zombieTouchingTarget = false;
             }
