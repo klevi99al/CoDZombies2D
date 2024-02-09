@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -67,8 +66,6 @@ public class PlayerMovement : MonoBehaviour
     private string directionPointed = "";
     private BoxCollider boxCollider;
 
-    private PhotonView view;
-
     private void Awake()
     {
         levelManager = GameObject.Find("LevelManager");
@@ -76,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        view = GetComponent<PhotonView>();
         playerAnimator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         boxCollider = transform.GetComponent<BoxCollider>();
         StartCoroutine(HandlePlayerFootStepSounds());
@@ -84,30 +80,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (view.IsMine)
+        if (playerInLaststand == false && canMove && !StaticVariables.gameIsPaused)
         {
-            if (playerInLaststand == false && canMove && !StaticVariables.gameIsPaused)
+            HandlePlayerMovement();
+            HandlePlayerJump();
+            HandlePlayerSlide();
+            HandePlayerHeadRotation();
+            HandePlayerBodyRotation();
+            HandlePlayerHandRotation();
+            IsGrounded();
+            if (canJump == false)
             {
-                HandlePlayerMovement();
-                HandlePlayerJump();
-                HandlePlayerSlide();
-                HandePlayerHeadRotation();
-                HandePlayerBodyRotation();
-                HandlePlayerHandRotation();
-                IsGrounded();
-                if (canJump == false)
-                {
-                    footAudioSource.Stop();
-                }
+                footAudioSource.Stop();
             }
         }
     }
 
     private void HandlePlayerSlide()
     {
-        if(moveValue != 0 && canJump && !isSliding && canSlide)
+        if (moveValue != 0 && canJump && !isSliding && canSlide)
         {
-            if(Input.GetKeyDown(slideKey) && references.IsPlayerFocused(true))
+            if (Input.GetKeyDown(slideKey) && references.IsPlayerFocused(true))
             {
                 HUD.Instance.SlidingProgress(this);
                 isSliding = true;
@@ -132,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         playerNeck.GetComponent<SpriteRenderer>().enabled = state;
         firstPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
         secondPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
-        
+
         // we need this check when the player has no weapons so it doesnt break
         if (GetComponent<PlayerInventory>().playerWeapons.Count > 0)
         {
@@ -211,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
     public void PlayDrinkingAnimation(Sprite sprite = null)
     {
         // change perk sprite
-        if(sprite != null)
+        if (sprite != null)
         {
             drinkAnimator.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = sprite;
         }
@@ -238,7 +231,7 @@ public class PlayerMovement : MonoBehaviour
         secondPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
 
         PlayerInventory inventory = transform.GetComponent<PlayerInventory>();
-        for(int i = 0; i < inventory.playerWeapons.Count; i++)
+        for (int i = 0; i < inventory.playerWeapons.Count; i++)
         {
             inventory.playerWeapons[i].GetComponent<SpriteRenderer>().enabled = state;
         }
@@ -444,7 +437,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             BoxCollider myCollider = GetComponent<BoxCollider>();
             BoxCollider otherCollider = collision.gameObject.GetComponent<BoxCollider>();

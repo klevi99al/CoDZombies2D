@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Photon.Pun;
 using TMPro;
 
 public class HandleFireAction : MonoBehaviour
@@ -65,7 +64,6 @@ public class HandleFireAction : MonoBehaviour
     private readonly bool canKnife = true;
     private readonly bool canReload = true;
     private readonly bool canThrowGranade = true;
-    private PhotonView view;
 
     [Header("Testing")]
     public TMP_Text debugger;
@@ -74,7 +72,6 @@ public class HandleFireAction : MonoBehaviour
     private void Start()
     {
         granadesHolder = HUD.Instance.granadesHolder.transform;
-        view = GetComponent<PhotonView>();
         audioSource = GetComponent<AudioSource>();
         weaponScript = transform.GetChild(0).GetComponent<Weapon_Script>();
 
@@ -94,9 +91,7 @@ public class HandleFireAction : MonoBehaviour
 
     private void Update()
     {
-        debugger.text = view.IsMine.ToString() + ": " + player.transform.name;
-        if (view.IsMine)
-        {
+        
             if (canPerformActions && !StaticVariables.gameIsPaused)
             {
                 if (Input.GetKey(fireKey))
@@ -155,7 +150,7 @@ public class HandleFireAction : MonoBehaviour
                         StartCoroutine(HandleThrowingGranade());
                     }
                 }
-            }
+            
         }
     }
 
@@ -324,7 +319,7 @@ public class HandleFireAction : MonoBehaviour
                     bullet = new GameObject("Random Bullet Name");
                     break;
             }
-            PhotonNetwork.Instantiate(bulletName, spawnPos, Quaternion.Euler(rotation));
+
             weaponScript.clipAmmo -= amount;
             HUD.Instance.UpdateAmmoHUD(weaponScript.clipAmmo, weaponScript.reserveAmmo);
 

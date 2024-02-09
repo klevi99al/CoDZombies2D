@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
     public AudioClip menuBackSound;
     public AudioSource source;
     public AudioMixer audioMixer;
+    public LobbyManager lobbyManager;
 
     [Header("Other Resources")]
     public TMP_Dropdown resolutionDropDown;
@@ -107,7 +108,7 @@ public class MainMenu : MonoBehaviour
 
     public void LaunchMultiplayerMenu()
     {
-
+        lobbyManager.CreateLobby();
     }
 
     public void LaunchSettingsMenu(bool activation)

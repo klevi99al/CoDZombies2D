@@ -836,10 +836,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: c432269c-fc34-4918-b399-f93b29ffa816
+  cloudProjectId: ed53b9c1-edbf-48ee-a573-778977df56b9
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Zombie_Project (3)
+  projectName: ZombieProject_Github
   organizationId: kleviii
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

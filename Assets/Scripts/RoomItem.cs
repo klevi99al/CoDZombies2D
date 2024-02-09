@@ -18,9 +18,4 @@ public class RoomItem : MonoBehaviour
     {
         roomName.text = room_name;
     }
-
-    public void OnClickItem()
-    {
-        manager.JoinRoom(roomName.text);
-    }
 }
