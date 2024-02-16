@@ -86,7 +86,6 @@ public class HandleFireAction : MonoBehaviour
         weaponEmpty = transform.GetChild(1).gameObject;
 
         player = transform.parent.parent.gameObject;
-        debugger = HUD.Instance.transform.parent.GetChild(5).GetComponent<TMP_Text>();
     }
 
     private void Update()

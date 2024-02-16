@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 2994924650780447443}
   - component: {fileID: 5337513741723813507}
   - component: {fileID: 164742029382358657}
-  - component: {fileID: 4468258236124974148}
-  - component: {fileID: 2140012798956034356}
   m_Layer: 0
   m_Name: pistol_bullet
   m_TagString: Bullet
@@ -29,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7679265255811775743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.873, y: 2.737, z: 0}
+  m_LocalPosition: {x: -10.873, y: 2.737, z: 2}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -99,8 +97,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 2, z: 1.5}
-  m_Center: {x: 0.24, y: -1.21, z: 0}
+  m_Size: {x: 0.7, y: 2.0000002, z: 79.42924}
+  m_Center: {x: 0.24000001, y: -1.21, z: 14.351685}
 --- !u!114 &164742029382358657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,42 +114,3 @@ MonoBehaviour:
   bulletDamage: 0
   enemiesTouched: 0
   playerWhoShotTheBullet: {fileID: 0}
---- !u!114 &4468258236124974148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7679265255811775743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 2140012798956034356}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &2140012798956034356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7679265255811775743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1

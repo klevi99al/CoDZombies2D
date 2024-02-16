@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.Tutorials.Core.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +22,7 @@ public class LobbyChat : MonoBehaviour
 
     public void SendMessage()
     {
-        if (chatInputField.text.IsNullOrWhiteSpace()) return;
+        if (chatInputField.text == string.Empty || chatInputField.text == "") return;
         GameObject message = Instantiate(chatTextPrefab, container);
         message.GetComponent<TMP_Text>().text = lobbyManager.playerName.text + ": " + chatInputField.text;
         chatInputField.text = "";
@@ -46,5 +45,6 @@ public class LobbyChat : MonoBehaviour
         {
             Destroy(container.GetChild(i).gameObject);
         }
+        lobbyManager.DeleteLobby();
     }
 }

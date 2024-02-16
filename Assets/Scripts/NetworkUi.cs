@@ -7,29 +7,29 @@ public class NetworkUi : NetworkBehaviour
 {
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
-    [SerializeField] private TMP_Text playersCountText;
+    [SerializeField] private Button serverButton;
 
     private NetworkVariable<int> playersNum = new(0, NetworkVariableReadPermission.Everyone);
+    public NetworkVariable<int> shouldStartGame = new(0, NetworkVariableReadPermission.Everyone);
 
-    private void Awake()
-    {
-        hostButton.onClick.AddListener(() =>
-       {
-           Debug.Log("Clicked Host");
-           NetworkManager.Singleton.StartHost();
-       });
+    //private void Awake()
+    //{
+    //    hostButton.onClick.AddListener(() =>
+    //    {
+    //       Debug.Log("Clicked Host");
+    //       NetworkManager.Singleton.StartHost();
+    //    });
 
-        clientButton.onClick.AddListener(() =>
-       {
-           Debug.Log("Clicked client");
-           NetworkManager.Singleton.StartClient();
-       });
-    }
+    //    clientButton.onClick.AddListener(() =>
+    //    {
+    //       Debug.Log("Clicked client");
+    //       NetworkManager.Singleton.StartClient();
+    //    });
 
-    private void Update()
-    {
-        playersNum.Value = NetworkManager.Singleton.ConnectedClients.Count;
-        if (!IsServer) return;
-        playersCountText.text = "Players: " + playersNum.Value.ToString();
-    }
+    //    serverButton.onClick.AddListener(() =>
+    //    {
+    //        Debug.Log("Clicked server");
+    //        NetworkManager.Singleton.StartServer();
+    //    });
+    //}
 }

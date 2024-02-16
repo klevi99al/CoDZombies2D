@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     [Header("Body Parts")]
     public GameObject playerShoulder;
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump = false;
     private string directionPointed = "";
     private BoxCollider boxCollider;
+    public readonly float playerZposition = -3.767f;
 
     private void Awake()
     {
@@ -80,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
+
         if (playerInLaststand == false && canMove && !StaticVariables.gameIsPaused)
         {
             HandlePlayerMovement();

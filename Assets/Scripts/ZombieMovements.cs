@@ -181,7 +181,10 @@ public class ZombieMovements : MonoBehaviour
 
     public void StopTraversalMovement()
     {
-        StopCoroutine(traversalCoroutine);
+        if (traversalCoroutine != null)
+        {
+            StopCoroutine(traversalCoroutine);
+        }
         isTraversing = false;
         zombieRb.isKinematic = false;
     }

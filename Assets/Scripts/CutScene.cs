@@ -69,9 +69,7 @@ public class CutScene : MonoBehaviour
             blackImage.color = end;
             shouldPlayCutScene = true;
 
-            Vector4 temp = start;
-            start = end;
-            end = temp;
+            (end, start) = (start, end);
             blackScreenTransitionTime -= blackScreenTime;
             blackScreenTime = blackScreenTransitionTime;
             counter++;
