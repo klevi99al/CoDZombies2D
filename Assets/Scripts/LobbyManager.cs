@@ -8,7 +8,6 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using System;
 using Unity.Netcode;
-using UnityEngine.Networking.Types;
 using System.Collections;
 
 public class LobbyManager : MonoBehaviour
