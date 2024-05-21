@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
-public class StaticVariables : MonoBehaviour
+public static class StaticVariables
 {
     public static bool gameIsOver = false;
-    public static bool isCoopGame = false;
     public static bool gameIsPaused = false;
     public static bool powerTurnedOn = false;
     public static bool canPowerupsDrop = true;
@@ -35,7 +35,8 @@ public class StaticVariables : MonoBehaviour
     public static float mysteryBoxSpinningAnimationTime = 2f;
     public static GameObject mysteryBox = null;
     public static List<int> mysteryBoxIndexesBeforeFiresale = new();
-
+    public static string noKey = "???";
+    public static string undefinedKey = "UNDEFINED";
     //powerups
     public static int totalPowerupsSpawnedThisRound = 0;
     public static int powerupDuration = 30;

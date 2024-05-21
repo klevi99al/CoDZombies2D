@@ -1,6 +1,6 @@
 A
 D
-Mouse0
+S
 Space
 V
 R
@@ -9,3 +9,4 @@ Alpha1
 G
 Tab
 T
+C

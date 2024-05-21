@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     [HideInInspector] public float bulletDamage;
     [HideInInspector] public int enemiesTouched = 0;                // if a bullet has already hit an enemy we dont do that same amount of damage to the zombie nearby
@@ -31,12 +32,25 @@ public class Bullet : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Slope"))
         {
-            Destroy(gameObject);
+            DestroyBullet();
+        }
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if(!IsServer) enabled = false;
+    }
+
+    private void DestroyBullet()
+    {
+        if (IsServer)
+        {
+            GetComponent<NetworkObject>().Despawn();
         }
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        DestroyBullet();
     }
 }

@@ -1,48 +1,32 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnPlayers : NetworkBehaviour
 {
-    [Header("Player Spawning variables")]
+    [Header("References")]
     public GameObject[] players;
-    public Transform playersHolder;
-    public float minX, maxX, minY, maxY;
-
-    [Header("Testing Network")]
-    public GameObject richtofen;
-    public GameObject nikolai;
-    public GameObject takeo;
-    public Transform[] playerSpawnPoints = new Transform[4];
 
     public override void OnNetworkSpawn()
     {
-        NetworkManager.Singleton.OnClientConnectedCallback += HandleClientConnected;
-        NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnected;
-
-        foreach(NetworkClient client in NetworkManager.Singleton.ConnectedClientsList) 
-        {
-            HandleClientConnected(client.ClientId);
-        }
-    }
-
-    public override void OnNetworkDespawn()
-    {
         if (IsServer)
         {
-            NetworkManager.Singleton.OnClientConnectedCallback -= HandleClientConnected;
-            NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnected;
-
-            
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
         }
     }
 
-    private void HandleClientConnected(ulong clientId)
+
+    private void SceneManager_OnLoadEventCompleted(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
-
-    }
-
-    private void HandleClientDisconnected(ulong clientId)
-    {
-
+        for (int i = 0; i < NetworkManager.Singleton.ConnectedClientsIds.Count; i++)
+        {
+            ulong clientId = NetworkManager.Singleton.ConnectedClientsIds[i];
+            GameObject player = Instantiate(players[i], Vector3.zero, Quaternion.Euler(Vector3.zero), transform);
+            player.transform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+            player.GetComponent<NetworkObject>().TrySetParent(transform);
+        }
     }
 }
