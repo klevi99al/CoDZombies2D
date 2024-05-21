@@ -82,8 +82,11 @@ public class UiAnimationHelper : MonoBehaviour
                 if (SettingsMenu.Instance.lastActiveOption != null)
                 {
                     UiAnimationHelper option = SettingsMenu.Instance.lastActiveOption.GetComponent<UiAnimationHelper>();
-                    option.leftCorner.anchoredPosition = option.leftCornerPosition;
-                    option.rightCorner.anchoredPosition = option.rightCornerPosition;
+                    if (option.uiCorners != null)
+                    {
+                        option.leftCorner.anchoredPosition = option.leftCornerPosition;
+                        option.rightCorner.anchoredPosition = option.rightCornerPosition;
+                    }
                     SettingsMenu.Instance.lastActiveOption.GetComponent<TMP_Text>().color = new(hoveredColor.x / 255, hoveredColor.y / 255, hoveredColor.z / 255, 1);
                     if (SettingsMenu.Instance.lastActiveOption.GetComponent<UiAnimationHelper>().connectedOption != null)
                     {
