@@ -1,6 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using System.Collections;
 
 public class KeyBinding : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class KeyBinding : MonoBehaviour
     private Key[] keys;
     
     public static KeyBinding Instance;
+
+    private readonly float keyCooldown = 0.1f;
+    private float cooldownTimer = 0f;
 
     private void Awake()
     {
@@ -23,16 +27,18 @@ public class KeyBinding : MonoBehaviour
             Destroy(this);
         }
         DontDestroyOnLoad(this);
+
+        cooldownTimer = keyCooldown;
     }
 
-    private void Start()
+    private void LateUpdate()
     {
-        keys = controlsHolder.GetComponentsInChildren<Key>();
-    }
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
 
-    private void Update()
-    {
-        if (shouldListenForKeyTyping)
+        if (shouldListenForKeyTyping && cooldownTimer <= 0)
         {
             if (Input.anyKeyDown)
             {
@@ -42,6 +48,7 @@ public class KeyBinding : MonoBehaviour
                     {
                         shouldListenForKeyTyping = false;
                         TrySetKey(keyCode);
+                        cooldownTimer = keyCooldown;
                         break;
                     }
                 }
@@ -51,6 +58,7 @@ public class KeyBinding : MonoBehaviour
 
     public void SetKey(GameObject option)
     {
+        if (cooldownTimer > 0) return;
 
         currentActiveKey = option;
         TMP_Text text = option.transform.GetChild(0).GetComponent<TMP_Text>();
@@ -79,5 +87,50 @@ public class KeyBinding : MonoBehaviour
         text.text = key.ToString();
         currentActiveKey.GetComponent<Key>().keyCode = key;
         currentActiveKey = null;
+
+        ApplySettings();
+        PlayerSettingsLoader.Instance.SaveSettings();
     }
+
+    private void OnEnable()
+    {
+        keys = controlsHolder.GetComponentsInChildren<Key>();
+    }
+
+    public void RetrieveSettings()
+    {
+        PlayerSettingsLoader settingsLoader = PlayerSettingsLoader.Instance;
+        if (settingsLoader != null && settingsLoader.keyBindings != null)
+        {
+            for (int i = 0; i < Mathf.Min(keys.Length, settingsLoader.keyBindings.Length); i++)
+            {
+                KeyCode keyCode = settingsLoader.keyBindings[i];
+                string keyText = keyCode != KeyCode.None ? keyCode.ToString() : StaticVariables.undefinedKey;
+                keys[i].transform.GetChild(0).GetComponent<TMP_Text>().text = keyText;
+                keys[i].GetComponent<Key>().keyCode = keyCode;
+            }
+        }
+        else
+        {
+            Debug.LogError("PlayerSettingsLoader instance or keyBindings array is null.");
+        }
+    }
+
+    public void ApplySettings()
+    {
+        PlayerSettingsLoader settingsLoader = PlayerSettingsLoader.Instance;
+        if (settingsLoader != null)
+        {
+            for (int i = 0; i < keys.Length; i++)
+            {
+                settingsLoader.keyBindings[i] = keys[i].GetComponent<Key>().keyCode;
+            }
+            Debug.Log("Settings applied successfully.");
+        }
+        else
+        {
+            Debug.LogError("PlayerSettingsLoader instance is null.");
+        }
+    }
+
 }

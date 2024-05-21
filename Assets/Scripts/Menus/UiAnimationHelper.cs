@@ -67,7 +67,7 @@ public class UiAnimationHelper : MonoBehaviour
         Debug.Log(name);
         if (!canBeChangable) return;
 
-        if(shouldChangeOnlyColor)
+        if (shouldChangeOnlyColor)
         {
             element.color = new(selectedColor.x / 255, selectedColor.y / 255, selectedColor.z / 255, 1);
             return;
@@ -85,7 +85,10 @@ public class UiAnimationHelper : MonoBehaviour
                     option.leftCorner.anchoredPosition = option.leftCornerPosition;
                     option.rightCorner.anchoredPosition = option.rightCornerPosition;
                     SettingsMenu.Instance.lastActiveOption.GetComponent<TMP_Text>().color = new(hoveredColor.x / 255, hoveredColor.y / 255, hoveredColor.z / 255, 1);
-                    SettingsMenu.Instance.lastActiveOption.GetComponent<UiAnimationHelper>().connectedOption.color = new(hoveredColor.x / 255, hoveredColor.y / 255, hoveredColor.z / 255, 1);
+                    if (SettingsMenu.Instance.lastActiveOption.GetComponent<UiAnimationHelper>().connectedOption != null)
+                    {
+                        SettingsMenu.Instance.lastActiveOption.GetComponent<UiAnimationHelper>().connectedOption.color = new(hoveredColor.x / 255, hoveredColor.y / 255, hoveredColor.z / 255, 1);
+                    }
                     option.uiCorners.SetActive(false);
                 }
 
@@ -96,8 +99,13 @@ public class UiAnimationHelper : MonoBehaviour
             cornerMovementCompleted = false;
             leftCorner.anchoredPosition = new Vector2(leftCorner.anchoredPosition.x - cornerOffset, leftCorner.anchoredPosition.y);
             rightCorner.anchoredPosition = new Vector2(rightCorner.anchoredPosition.x + cornerOffset, rightCorner.anchoredPosition.y);
+
             SettingsMenu.Instance.activeOption.GetComponent<TMP_Text>().color = new(selectedColor.x / 255, selectedColor.y / 255, selectedColor.z / 255, 1);
-            SettingsMenu.Instance.activeOption.GetComponent<UiAnimationHelper>().connectedOption.color = new(selectedColor.x / 255, selectedColor.y / 255, selectedColor.z / 255, 1);
+            if (SettingsMenu.Instance.activeOption.GetComponent<UiAnimationHelper>().connectedOption != null)
+            {
+                SettingsMenu.Instance.activeOption.GetComponent<UiAnimationHelper>().connectedOption.color = new(selectedColor.x / 255, selectedColor.y / 255, selectedColor.z / 255, 1);
+            }
+
             SettingsMenu.Instance.optionDescription.text = description;
             return;
         }

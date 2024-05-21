@@ -23,6 +23,8 @@ public class GraphicsMenu : MonoBehaviour
     private TMP_Text lastfullScreenText;
     private TMP_Text lastDisplayText;
 
+    private int lastQualityIndex;
+
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions = new();
 
@@ -91,6 +93,10 @@ public class GraphicsMenu : MonoBehaviour
         {
             UpdateTargetFPS();
         }
+
+        int savedQualityIndex = PlayerPrefs.GetInt("GraphicsQualityIndex", qualitySettingsNames.Count - 1);
+        ChangeQualitySettings(savedQualityIndex);
+        lastQualityIndex = savedQualityIndex;
     }
 
     public void SetTargetFPSIndex()
@@ -170,6 +176,12 @@ public class GraphicsMenu : MonoBehaviour
         graphicsQuality.text = qualitySettingsNames[index];
     }
 
+    public void ChangeQualitySettings(int index)
+    {
+        QualitySettings.SetQualityLevel(index);
+        graphicsQuality.text = qualitySettingsNames[index];
+    }
+
 
     public void ChangeResolution()
     {
@@ -210,7 +222,7 @@ public class GraphicsMenu : MonoBehaviour
         else
         {
             resolutionIndex = lastResolutionIndex;
-            resolutionText.text = filteredResolutions[resolutionIndex].width + " x " + filteredResolutions[resolutionIndex].height;
+            
 
             fullScreenText.text = Screen.fullScreen ? "On" : "Off";
             lastfullScreenText.text = fullScreenText.text;
@@ -221,17 +233,16 @@ public class GraphicsMenu : MonoBehaviour
             monitorIndex = lastMonitorIndex;
             currentDisplayText.text = monitorIndex.ToString();
         }
+        resolutionText.text = filteredResolutions[resolutionIndex].width + " x " + filteredResolutions[resolutionIndex].height;
     }
 
 
     private IEnumerator ChangeDisplayAndSetResolution(int monitorIndex, int width, int height, bool isFullScreen)
     {
-        // Change the display
         displayChanger.ChangeDisplayClicked(monitorIndex);
 
         yield return new WaitForSeconds(0.55f);
 
-        // Set the resolution
         Screen.SetResolution(width, height, isFullScreen);
         Screen.fullScreen = isFullScreen;
     }
@@ -275,5 +286,30 @@ public class GraphicsMenu : MonoBehaviour
             fpsText.text = "On";
             fpsHolder.SetActive(true);
         }
+    }
+
+    public void SetDefaultGraphicsSettings()
+    {
+        resolutionIndex = filteredResolutions.Count - 1;
+
+        fullScreenText.text = "On";
+
+        vSyncText.text = "On";
+        QualitySettings.vSyncCount = 1;
+        canSetTargetFPS = false;
+        SetTargetFPSIndex();
+        maxFpsText.text = "Unlimited";
+
+        fpsText.text = "Off";
+        fpsHolder.SetActive(false);
+
+        int veryHighQualityIndex = qualitySettingsNames.Count - 1;
+        ChangeQualitySettings(veryHighQualityIndex);
+
+        currentDisplayText.text = "0";
+
+        monitorIndex = 0;
+
+        ApplyChanges(true);
     }
 }

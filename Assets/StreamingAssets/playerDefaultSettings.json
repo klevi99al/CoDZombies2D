@@ -1,0 +1,14 @@
+{
+    "moveLeftKey": "A",
+    "moveRightKey": "D",
+    "jumpKey": "Space",
+    "fireKey": "Mouse0",
+    "meleeKey": "V",
+    "reloadKey": "R",
+    "useKey": "F",
+    "nextWeaponKey": "Tab",
+    "throwPrimaryKey": "G",
+    "scoreboardKey": "CapsLock",
+    "chatKey": "T",
+    "slideKey": "C"
+}
