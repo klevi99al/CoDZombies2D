@@ -36,4 +36,14 @@ public class SoundManager : MonoBehaviour
             slider.gameObject.GetComponentInChildren<TMP_Text>().text = slider.value.ToString();
         }
     }
+
+    public void SetAudioVolume(AudioSource audioSource, float volume)
+    {
+        audioSource.volume = volume;
+    }
+
+    public void SetAudioSourceOff(AudioSource source)
+    {
+        source.volume = 0.0f;
+    }
 }
