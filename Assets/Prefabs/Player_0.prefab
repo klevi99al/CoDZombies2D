@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036193534520751}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.6460006, y: -0.0049996376, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036193902701021}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7233036193815313900
 GameObject:
@@ -41,13 +41,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7233036193815313891}
   - component: {fileID: 7233036193815313895}
+  - component: {fileID: 9078135863831017517}
   - component: {fileID: 7233036193815313913}
   - component: {fileID: 7233036193815313916}
   - component: {fileID: 7233036193815313917}
   - component: {fileID: 7233036193815313914}
   - component: {fileID: 7233036193815313909}
   - component: {fileID: 7233036193815313908}
-  - component: {fileID: 9078135863831017517}
   m_Layer: 9
   m_Name: Player_0
   m_TagString: Player
@@ -62,6 +62,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036193815313900}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -51.06, y: -1.46, z: -3.604}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -75,7 +76,6 @@ Transform:
   - {fileID: 8990721683159143326}
   - {fileID: 8990721682521754614}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!212 &7233036193815313895
 SpriteRenderer:
@@ -129,6 +129,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9078135863831017517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233036193815313900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 681279951
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &7233036193815313913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,12 +162,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0fb6f6c2169c14587b1ed3ed112b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 100
+  lifeNumber: 1
   playerHealth: 100
+  playerMaxHealth: 100
+  isActivePlayer: 1
+  healTimer: 0.1
   coolDownToHealAfterBeingHit: 3
   redSplashScreen: {fileID: 0}
   laststandSprite: {fileID: 8990721682521754613}
+  levelManager: {fileID: 0}
   healthSlider: {fileID: 0}
+  perkIndexes: 
+  playersToRevive: []
+  playerCanTakeDamage: 1
+  isDrinking: 0
+  dividor: 100
+  previousHealth: 100
+  playerSprites: []
 --- !u!114 &7233036193815313916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,32 +198,37 @@ MonoBehaviour:
   secondPlayerHand: {fileID: 7233036194058100810}
   playerHands: {fileID: 7233036195263637604}
   playerNeck: {fileID: 7233036194951855731}
+  drinkAnimator: {fileID: 0}
   playerAnimator: {fileID: 7233036194686725127}
+  slideAnimator: {fileID: 0}
   moveRight: 100
   moveLeft: 97
   jumpKey: 32
+  slideKey: 0
   useButton: 102
-  rightSideUpperLimit: 35
-  rightSideDownLimit: 330
-  leftSideUpperLimit: 155
-  leftSideDownLimit: 210
   headUpperLimit: 25
   headDownLimit: 345
   movementSpeed: 2.5
   jumpSpeed: 1500
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  extraHight: 0.61
+  playerSlide: {fileID: 0}
+  slideSource: {fileID: 0}
   footAudioSource: {fileID: 8990721683159143327}
+  extraHight: 0.61
+  slideForce: 1400
   levelManager: {fileID: 0}
   weaponsHolder: {fileID: 0}
+  playerRigidbody: {fileID: 0}
+  references: {fileID: 0}
+  moveValue: 0
   playerDirection: 
-  playerIsMoving: 0
+  canMove: 1
+  isDrinking: 0
+  isSliding: 0
   playerInLaststand: 0
+  canSlide: 1
 --- !u!95 &7233036193815313917
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -208,7 +245,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7233036193815313914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,9 +272,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036193815313900}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 2.2200942, z: 0.83766025}
   m_Center: {x: 4.9063007e-17, y: -0.021330357, z: 0.034702495}
 --- !u!54 &7233036193815313908
@@ -246,31 +292,26 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036193815313900}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &9078135863831017517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7233036193815313900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &7233036193887618308
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,13 +335,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036193887618308}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.044, y: 0.0010004044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036193902701021}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7233036193902701022
 GameObject:
@@ -328,6 +369,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036193902701022}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0000002384186, y: 0, z: -2.842171e-14}
   m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
@@ -339,7 +381,6 @@ Transform:
   - {fileID: 7233036193887618363}
   - {fileID: 8990721683022328592}
   m_Father: {fileID: 7233036195263637531}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7233036193902701020
 SpriteRenderer:
@@ -431,14 +472,22 @@ MonoBehaviour:
   granadeSpawnPoint: {fileID: 8990721683022328592}
   primaryHand: {fileID: 7233036193902701022}
   secondaryHand: {fileID: 7233036194058100810}
+  doubleTap: {fileID: 0}
   knifeHitNothing: {fileID: 8300000, guid: b59640f882c7fac42979ac96150c742e, type: 3}
   grenadeRoll: {fileID: 0}
   knifeAnimator: {fileID: 8990721682652068478}
   granadeAnimator: {fileID: 8990721681726417034}
   secondaryHandAnimator: {fileID: 8990721682896150442}
+  drinkAnimator: {fileID: 0}
+  papInPorgress: 0
+  canCycleWeapons: 1
+  isReloading: 0
   isKnifing: 0
   isThrowingGrenade: 0
   canPerformActions: 1
+  weaponEmpty: {fileID: 0}
+  debugger: {fileID: 0}
+  player: {fileID: 0}
 --- !u!82 &7233036193902701016
 AudioSource:
   m_ObjectHideFlags: 0
@@ -559,13 +608,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194058100810}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.058999777, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036195263637531}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7233036194058100808
 SpriteRenderer:
@@ -642,6 +691,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194070884708}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6830001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -650,7 +700,6 @@ Transform:
   - {fileID: 7233036194468595288}
   - {fileID: 7233036194822147868}
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7233036194468595290
 GameObject:
@@ -676,13 +725,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194468595290}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: -0.0729, z: -0.0443}
   m_LocalScale: {x: 1.1497741, y: 1.0783, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036194070884635}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7233036194468595289
 SpriteRenderer:
@@ -759,6 +808,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194614471625}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -766,7 +816,6 @@ Transform:
   m_Children:
   - {fileID: 7233036194951855730}
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7233036194686725122
 GameObject:
@@ -793,13 +842,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194686725122}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036195130367738}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7233036194686725120
 SpriteRenderer:
@@ -855,7 +904,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7233036194686725127
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -872,7 +921,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7233036194822147869
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,13 +947,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194822147869}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.042999744, z: 0.08800007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036194070884635}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7233036194822147859
 SpriteRenderer:
@@ -981,13 +1031,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036194951855731}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.4435, z: 0.083}
   m_LocalScale: {x: 1, y: 1.7273, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036194614471624}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7233036194951855729
 SpriteRenderer:
@@ -1064,6 +1114,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036195130367739}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.5399995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1071,7 +1122,6 @@ Transform:
   m_Children:
   - {fileID: 7233036194686725121}
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7233036195263637604
 GameObject:
@@ -1096,6 +1146,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7233036195263637604}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.0000000018626451, y: 0.1960001, z: 0.016999962}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1108,7 +1159,6 @@ Transform:
   - {fileID: 8990721682896150440}
   - {fileID: 8990721681505232437}
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681452804368
 GameObject:
@@ -1133,13 +1183,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681452804368}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.8941019, y: 0.23800005, z: 0.00988722}
   m_LocalScale: {x: 0.6000001, y: 1.00405, z: 0.80000025}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721682223332523}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &8990721681471701202
 GameObject:
@@ -1166,6 +1216,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681471701202}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7569651, y: 0.012990013, z: -0.15463406}
   m_LocalScale: {x: 0.12194524, y: 0.1365051, z: 0.100000136}
@@ -1173,7 +1224,6 @@ Transform:
   m_Children:
   - {fileID: 8990721681814700523}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721681471701164
 SpriteRenderer:
@@ -1240,16 +1290,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Glock-17
-  weaponType: pistol
+  weaponType: 0
   clipAmmo: 8
   reserveAmmo: 50
   damage: 50
   coolDownShoot: 0.135
-  shootSound: {fileID: 8300000, guid: f9ce2d1e1bf436c4c88a5fd4ecd33f46, type: 3}
-  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   hudImage: {fileID: 21300000, guid: 8121b888cbf3e5544b1f526970fd5f31, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f9ce2d1e1bf436c4c88a5fd4ecd33f46, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721681486560132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,13 +1331,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681486560132}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.99, y: 0.74, z: 0.21999834}
   m_LocalScale: {x: 1.101185, y: 1.0476894, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721683422190277}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681505232436
 GameObject:
@@ -1304,6 +1362,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681505232436}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.04, y: 0.059, z: -0.032}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1324,7 +1383,6 @@ Transform:
   - {fileID: 8990721681510798503}
   - {fileID: 8990721681714022126}
   m_Father: {fileID: 7233036195263637531}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681510798501
 GameObject:
@@ -1351,6 +1409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681510798501}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7600474, y: 0.029003754, z: -0.023999754}
   m_LocalScale: {x: 0.10000008, y: 0.1, z: 0.10000008}
@@ -1358,7 +1417,6 @@ Transform:
   m_Children:
   - {fileID: 8990721681918680220}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721681510798502
 SpriteRenderer:
@@ -1425,16 +1483,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Five-Seven
-  weaponType: pistol
+  weaponType: 0
   clipAmmo: 15
   reserveAmmo: 80
   damage: 75
   coolDownShoot: 0.22
-  shootSound: {fileID: 8300000, guid: 7a659ab38c89dc24d8577e0b44a699e2, type: 3}
-  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   hudImage: {fileID: 21300000, guid: 2ff027638ae189d4a91aed149cde5ec0, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 7a659ab38c89dc24d8577e0b44a699e2, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721681626239173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1526,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681626239173}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.71500343, y: -0.05400406, z: 0.006999906}
   m_LocalScale: {x: 0.14999998, y: 0.15, z: 0.14999998}
@@ -1467,7 +1534,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682698963230}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721681626239174
 SpriteRenderer:
@@ -1534,16 +1600,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: AK - 47
-  weaponType: rifle
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 240
   damage: 100
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 0d6837556c8e305419c270957b9de4b7, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 21300000, guid: 9530832f251f43042afd518f33b46135, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 0d6837556c8e305419c270957b9de4b7, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721681659295314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,13 +1641,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681659295314}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681678693937
 GameObject:
@@ -1598,13 +1672,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681678693937}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.03, y: 0.668, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721682251982043}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681689142269
 GameObject:
@@ -1629,13 +1703,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681689142269}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.422, y: 0.437, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721683563548414}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681714022125
 GameObject:
@@ -1662,6 +1736,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681714022125}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.004965476, w: 0.99998766}
   m_LocalPosition: {x: 0.80496925, y: -0.013995513, z: 0.018000063}
   m_LocalScale: {x: 0.13541262, y: 0.13109986, z: 1}
@@ -1669,7 +1744,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682254843350}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.569}
 --- !u!212 &8990721681714022120
 SpriteRenderer:
@@ -1736,16 +1810,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Galil
-  weaponType: rifle
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 350
   damage: 200
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 4e77d9a9d772ab549a57a6537358b792, type: 3}
-  reloadSound: {fileID: 8300000, guid: 153b34c94de678747904fc9d21f25557, type: 3}
   hudImage: {fileID: 21300000, guid: ac0be6466896a864e8261f8f49c671d1, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 4e77d9a9d772ab549a57a6537358b792, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 153b34c94de678747904fc9d21f25557, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721681726417039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,17 +1853,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681726417039}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.359, y: 0.099, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036195263637531}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8990721681726417034
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1798,7 +1880,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8990721681726417033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1874,13 +1957,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681814700522}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0.85, z: 0.32999986}
   m_LocalScale: {x: 1.2300601, y: 1.0988599, z: 1.4999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721681471701203}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681918680195
 GameObject:
@@ -1905,13 +1988,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681918680195}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.88, y: 1.18, z: 0.17999886}
   m_LocalScale: {x: 1.4999998, y: 1.5, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721681510798503}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721681978316107
 GameObject:
@@ -1938,6 +2021,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681978316107}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.1608958, y: 0.049000755, z: -0.049999777}
   m_LocalScale: {x: 0.2897251, y: 0.275275, z: 0.20000023}
@@ -1945,7 +2029,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682437866742}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721681978316101
 SpriteRenderer:
@@ -2012,16 +2095,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: AWP
-  weaponType: sniper
+  weaponType: 0
   clipAmmo: 8
   reserveAmmo: 50
   damage: 500
   coolDownShoot: 1.3
-  shootSound: {fileID: 8300000, guid: e4bcf1bf2852d684d92df5ef55f374cf, type: 3}
-  reloadSound: {fileID: 8300000, guid: 4c0d3aaca544cd041bef761dbae98b46, type: 3}
   hudImage: {fileID: 21300000, guid: e8f48aa012a4c984da540d0976a7baf2, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: e4bcf1bf2852d684d92df5ef55f374cf, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 4c0d3aaca544cd041bef761dbae98b46, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721681994149950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,6 +2138,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721681994149950}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.74996793, y: 0.09500027, z: -0.013999883}
   m_LocalScale: {x: 0.18287386, y: 0.16263823, z: 1}
@@ -2054,7 +2146,6 @@ Transform:
   m_Children:
   - {fileID: 8990721683257089221}
   m_Father: {fileID: 7233036193902701021}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721681994149944
 SpriteRenderer:
@@ -2121,16 +2212,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Uzi
-  weaponType: rifle
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 350
   damage: 150
   coolDownShoot: 0.135
-  shootSound: {fileID: 8300000, guid: 42b7ebde9330dbe4bae234638542d88b, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 21300000, guid: 1edd94c5a4ab28447b715f9d870ad2a7, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 42b7ebde9330dbe4bae234638542d88b, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721682099953392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,13 +2253,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682099953392}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.99, y: 0.8, z: 0.35333312}
   m_LocalScale: {x: 1.0531524, y: 1.0418031, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721683506581838}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682223332521
 GameObject:
@@ -2187,6 +2286,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682223332521}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.21799833, y: -0.011004195, z: -0.11663541}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.29999995}
@@ -2195,7 +2295,6 @@ Transform:
   - {fileID: 8990721682681213978}
   - {fileID: 8990721681452804369}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721682223332522
 SpriteRenderer:
@@ -2262,16 +2361,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: RPG
-  weaponType: launcher
+  weaponType: 0
   clipAmmo: 1
   reserveAmmo: 20
   damage: 200
   coolDownShoot: 1
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
   hudImage: {fileID: 0}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 0}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 0}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721682251982042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2404,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682251982042}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7200083, y: -0.04300247, z: 0.018000063}
   m_LocalScale: {x: 0.23404196, y: 0.27079982, z: 1}
@@ -2304,7 +2412,6 @@ Transform:
   m_Children:
   - {fileID: 8990721681678693938}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721682251982037
 SpriteRenderer:
@@ -2371,16 +2478,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Thompson
-  weaponType: rifle
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 350
   damage: 130
   coolDownShoot: 0.065
-  shootSound: {fileID: 8300000, guid: 301228e2f58d7d54d9ff79bc4db4e6c9, type: 3}
-  reloadSound: {fileID: 8300000, guid: 411433f259a1894478a7213d6a90b583, type: 3}
   hudImage: {fileID: 21300000, guid: 490531ec61415cc4fbf9bd1edc67327a, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 301228e2f58d7d54d9ff79bc4db4e6c9, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 411433f259a1894478a7213d6a90b583, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721682254843349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,13 +2519,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682254843349}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.572, y: 0.873, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721681714022126}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682437866741
 GameObject:
@@ -2435,13 +2550,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682437866741}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.18, y: 0.24, z: -0.03500103}
   m_LocalScale: {x: 0.5999999, y: 0.6, z: 0.7499998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721681978316100}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682501629615
 GameObject:
@@ -2466,13 +2581,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682501629615}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.359, y: 0.367, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721683361568917}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682521754613
 GameObject:
@@ -2499,13 +2614,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682521754613}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.2, y: -1.035, z: 0.126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721682521754615
 SpriteRenderer:
@@ -2567,9 +2682,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682521754613}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.8700008, y: 1.3500001, z: 0.20000009}
   m_Center: {x: 0, y: 0.5805, z: -0.00000048056245}
 --- !u!1 &8990721682526450068
@@ -2596,13 +2719,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682526450068}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.00014106394, y: 0, z: -0.0001641115}
   m_LocalScale: {x: 1.3333331, y: 1, z: 0.74999976}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721682681213978}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721682526450069
 SpriteRenderer:
@@ -2681,17 +2804,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682652068451}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.526, y: 0.103, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036195263637531}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8990721682652068478
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2708,7 +2831,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8990721682652068477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2784,6 +2908,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682681213977}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.8941002, y: 0.23800005, z: 0.00988722}
   m_LocalScale: {x: 0.8, y: 1.00405, z: 0.6}
@@ -2791,7 +2916,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682526450070}
   m_Father: {fileID: 8990721682223332523}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &8990721682698963229
 GameObject:
@@ -2816,13 +2940,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682698963229}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.877, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721681626239175}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682896069134
 GameObject:
@@ -2847,13 +2971,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682896069134}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.39, y: 0.52, z: -0.3600001}
   m_LocalScale: {x: 0.85506845, y: 0.7908666, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721683064158830}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682896150447
 GameObject:
@@ -2880,17 +3004,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682896150447}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.26, y: -0.105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036195263637531}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8990721682896150442
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2907,7 +3031,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8990721682896150441
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2985,6 +3110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682920961508}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.8909688, y: 0.031996727, z: -0.032000072}
   m_LocalScale: {x: 0.12872772, y: 0.1647441, z: 1}
@@ -2992,7 +3118,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682936483841}
   m_Father: {fileID: 7233036193902701021}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721682920961511
 SpriteRenderer:
@@ -3059,16 +3184,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: M8A1
-  weaponType: semiAuto
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 240
   damage: 120
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 2d4e2a5ce70e04644a408239152667f9, type: 3}
-  reloadSound: {fileID: 8300000, guid: 31eaf460f06ef83499dd561cd5b9c78e, type: 3}
   hudImage: {fileID: 21300000, guid: 4ac10a6c1a111cd4d940b905e844732d, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2d4e2a5ce70e04644a408239152667f9, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 31eaf460f06ef83499dd561cd5b9c78e, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721682936483840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,13 +3225,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682936483840}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.864, y: 0.578, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721682920961509}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721682957277664
 GameObject:
@@ -3125,6 +3258,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721682957277664}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.93900245, y: -0.022006378, z: -0.16463578}
   m_LocalScale: {x: 0.20000018, y: 0.2, z: 0.20000018}
@@ -3132,7 +3266,6 @@ Transform:
   m_Children:
   - {fileID: 8990721683542465041}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721682957277665
 SpriteRenderer:
@@ -3199,16 +3332,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Dragunov
-  weaponType: sniper
+  weaponType: 0
   clipAmmo: 8
   reserveAmmo: 32
   damage: 300
   coolDownShoot: 0.3
-  shootSound: {fileID: 8300000, guid: 16a116a189c76df438705321ccb4a979, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 21300000, guid: 62a2d7e407510384183bb421858fe395, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 16a116a189c76df438705321ccb4a979, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721683022328599
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,13 +3373,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683022328599}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.627, y: 0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036193902701021}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721683064158828
 GameObject:
@@ -3265,6 +3406,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683064158828}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.97598976, y: -0.050998077, z: -0.08563572}
   m_LocalScale: {x: 0.17542434, y: 0.18966539, z: 0.1000001}
@@ -3272,7 +3414,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682896069135}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721683064158829
 SpriteRenderer:
@@ -3339,16 +3480,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Sawed-Off
-  weaponType: shotgun
+  weaponType: 0
   clipAmmo: 5
   reserveAmmo: 25
   damage: 300
   coolDownShoot: 0.7
-  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 21300000, guid: debc3098a2747fd419dbdc0649b5cc7e, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721683159143325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,13 +3522,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683159143325}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.1304, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7233036193815313891}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &8990721683159143327
 AudioSource:
@@ -3500,13 +3649,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683177631145}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.07, y: 0.72, z: 0.049998756}
   m_LocalScale: {x: 1.1322463, y: 1.0419095, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721683417411301}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721683257089220
 GameObject:
@@ -3531,13 +3680,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683257089220}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.02, y: 0.499, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721681994149951}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721683361568916
 GameObject:
@@ -3564,6 +3713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683361568916}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.9100508, y: -0.093012795, z: 0}
   m_LocalScale: {x: 0.36886975, y: 0.42302525, z: 1}
@@ -3571,7 +3721,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682501629608}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721683361568919
 SpriteRenderer:
@@ -3638,16 +3787,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: M16
-  weaponType: semiAuto
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 240
   damage: 120
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 973f4fd1f3da36248b3a6c9042836940, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 21300000, guid: fc44d44d4167e5d439295c020acbfcb5, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 973f4fd1f3da36248b3a6c9042836940, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721683417411307
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,6 +3830,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683417411307}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7909922, y: 0.03399338, z: -0.12663561}
   m_LocalScale: {x: 0.13248001, y: 0.14396645, z: 0.100000024}
@@ -3680,7 +3838,6 @@ Transform:
   m_Children:
   - {fileID: 8990721683177631146}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721683417411300
 SpriteRenderer:
@@ -3747,16 +3904,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Desert Eagle
-  weaponType: pistol
+  weaponType: 0
   clipAmmo: 7
   reserveAmmo: 35
   damage: 100
   coolDownShoot: 0.3
-  shootSound: {fileID: 8300000, guid: a28f4fedcf47566489817a824234b244, type: 3}
-  reloadSound: {fileID: 8300000, guid: ae6e8d9cf19ade84eb42624b906ee852, type: 3}
   hudImage: {fileID: 21300000, guid: 18f2484b93549714b87f262b9575b1b8, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: a28f4fedcf47566489817a824234b244, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: ae6e8d9cf19ade84eb42624b906ee852, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721683422190283
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,6 +3947,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683422190283}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.82997555, y: -0.016115889, z: -0.01499993}
   m_LocalScale: {x: 0.13621686, y: 0.16075376, z: 0.10000002}
@@ -3789,7 +3955,6 @@ Transform:
   m_Children:
   - {fileID: 8990721681486560133}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721683422190276
 SpriteRenderer:
@@ -3856,16 +4021,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Nova
-  weaponType: shotgun
+  weaponType: 0
   clipAmmo: 6
   reserveAmmo: 50
   damage: 200
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 21300000, guid: 4965cfa904185ad4ea189a174c2234c8, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721683506581837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3891,6 +4064,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683506581837}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7280039, y: -0.0050080866, z: -0.17463553}
   m_LocalScale: {x: 0.14242955, y: 0.11698613, z: 0.14999999}
@@ -3898,7 +4072,6 @@ Transform:
   m_Children:
   - {fileID: 8990721682099953393}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721683506581839
 SpriteRenderer:
@@ -3965,16 +4138,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: M4A1
-  weaponType: rifle
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 300
   damage: 150
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 2037dcc95481ee24e932b8d5fee492e7, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 21300000, guid: bbb64a0e9d0a6f84b9d14459f915a788, type: 3}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2037dcc95481ee24e932b8d5fee492e7, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8990721683542465040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,13 +4179,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683542465040}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.02, y: 0.41, z: 0.21499985}
   m_LocalScale: {x: 0.74999976, y: 0.75, z: 0.7499998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8990721682957277666}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8990721683563548413
 GameObject:
@@ -4031,6 +4212,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990721683563548413}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5710519, y: -0.04101084, z: 0.0009998642}
   m_LocalScale: {x: 0.25009677, y: 0.23907398, z: 1}
@@ -4038,7 +4220,6 @@ Transform:
   m_Children:
   - {fileID: 8990721681689142270}
   m_Father: {fileID: 8990721681505232437}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8990721683563548408
 SpriteRenderer:
@@ -4105,13 +4286,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: MP5
-  weaponType: rifle
+  weaponType: 0
   clipAmmo: 30
   reserveAmmo: 300
   damage: 100
   coolDownShoot: 0.07
-  shootSound: {fileID: 8300000, guid: f01a74e2166003a45ac1ba33c4ad5c52, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 0}
+  specialBullet: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f01a74e2166003a45ac1ba33c4ad5c52, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
+  totalBulletsPerShot: 5
+  bulletSpawnSpeed: 0.1
+  bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}

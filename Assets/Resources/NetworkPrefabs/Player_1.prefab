@@ -5608,8 +5608,8 @@ MonoBehaviour:
   hudImage: {fileID: 4142170040627882291, guid: 2f2132e8aaa7d6542a392a7d576b8e9f, type: 3}
   specialBullet: {fileID: 0}
   papSprite: {fileID: 0}
-  shootSound: {fileID: 8300000, guid: 7a659ab38c89dc24d8577e0b44a699e2, type: 3}
-  shootSoundUpgrade: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 8e65b591674dcca43b266a459bc65905, type: 3}
+  shootSoundUpgrade: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1

@@ -9,6 +9,7 @@ public class SpawnPlayers : NetworkBehaviour
 {
     [Header("References")]
     public GameObject[] players;
+    public GameObject[] playerSpawnPoints;
 
     public override void OnNetworkSpawn()
     {
@@ -24,7 +25,7 @@ public class SpawnPlayers : NetworkBehaviour
         for (int i = 0; i < NetworkManager.Singleton.ConnectedClientsIds.Count; i++)
         {
             ulong clientId = NetworkManager.Singleton.ConnectedClientsIds[i];
-            GameObject player = Instantiate(players[i], Vector3.zero, Quaternion.Euler(Vector3.zero), transform);
+            GameObject player = Instantiate(players[i], playerSpawnPoints[i].transform.position, Quaternion.Euler(Vector3.zero), transform);
             player.transform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
             player.GetComponent<NetworkObject>().TrySetParent(transform);
         }

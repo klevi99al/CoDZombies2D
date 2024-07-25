@@ -4408,10 +4408,6 @@ MonoBehaviour:
   - {fileID: 50118446}
   - {fileID: 667716697}
   - {fileID: 1800393829}
-  submenus:
-  - {fileID: 50118446}
-  - {fileID: 0}
-  - {fileID: 0}
   SETTING: 0
 --- !u!1 &159377124
 GameObject:
@@ -6465,7 +6461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tAbandoned Village"
+  m_text: "\tTitle Default"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
@@ -8890,7 +8886,7 @@ MonoBehaviour:
         - m_Target: {fileID: 50118454}
           m_TargetAssemblyTypeName: GraphicsMenu, Assembly-CSharp
           m_MethodName: SetTargetFPSIndex
-          m_Mode: 1
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14542,7 +14538,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tAbandoned Village"
+  m_text: "\tTitle Default"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
@@ -18474,7 +18470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tAbandoned Village"
+  m_text: "\tTitle Default"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
@@ -21363,9 +21359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Abandoned Village, a once thriving community now overrun by
-    hordes of the undead. Will you have what it takes to survive the relentless onslaught
-    of zombies?
+  m_text: Default Description
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
@@ -23648,9 +23642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Abandoned Village, a once thriving community now overrun by
-    hordes of the undead. Will you have what it takes to survive the relentless onslaught
-    of zombies?
+  m_text: Default Description
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
@@ -47331,9 +47323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Abandoned Village, a once thriving community now overrun by
-    hordes of the undead. Will you have what it takes to survive the relentless onslaught
-    of zombies?
+  m_text: Default Description
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c4aa887db2e34f4899968973f338826, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2c4aa887db2e34f4899968973f338826, type: 2}

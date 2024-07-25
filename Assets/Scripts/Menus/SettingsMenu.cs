@@ -21,9 +21,8 @@ public class SettingsMenu : MonoBehaviour
 
     [Header("Other references")]
     public GameObject[] settings;
-    public GameObject[] submenus;
 
-    public ACTIVE_SETTING SETTING = ACTIVE_SETTING.GRAPHICS;
+    [HideInInspector] public ACTIVE_SETTING SETTING = ACTIVE_SETTING.GRAPHICS;
 
     public enum ACTIVE_SETTING
     {

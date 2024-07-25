@@ -23,8 +23,6 @@ public class GraphicsMenu : MonoBehaviour
     private TMP_Text lastfullScreenText;
     private TMP_Text lastDisplayText;
 
-    private int lastQualityIndex;
-
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions = new();
 
@@ -82,34 +80,36 @@ public class GraphicsMenu : MonoBehaviour
         lastResolutionIndex = resolutionIndex;
         lastResolutionText = resolutionText;
         lastfullScreenText = fullScreenText;
-        
+
         isFullScreen = Screen.fullScreen;
         resolutionText.text = Screen.currentResolution.width + " x " + Screen.currentResolution.height;
         fullScreenText.text = Screen.fullScreen ? "On" : "Off";
         vSyncText.text = QualitySettings.vSyncCount == 1 ? "On" : "Off";
 
         canSetTargetFPS = QualitySettings.vSyncCount != 1;
-        if(canSetTargetFPS)
-        {
-            UpdateTargetFPS();
-        }
+
+        UpdateTargetFPS();
+        SetVsyncValue();
+
 
         int savedQualityIndex = PlayerPrefs.GetInt("GraphicsQualityIndex", qualitySettingsNames.Count - 1);
         ChangeQualitySettings(savedQualityIndex);
-        lastQualityIndex = savedQualityIndex;
     }
 
-    public void SetTargetFPSIndex()
+    public void SetTargetFPSIndex(bool ignoreCounter = false)
     {
         Vector4 color;
         if (canSetTargetFPS)
         {
-            selectedFPSIndex++;
-            if (selectedFPSIndex > targetFPSOptions.Length - 1)
+            if (!ignoreCounter)
             {
-                selectedFPSIndex = 0;
+                selectedFPSIndex++;
+                if (selectedFPSIndex > targetFPSOptions.Length - 1)
+                {
+                    selectedFPSIndex = 0;
+                }
             }
-            color = new(SettingsMenu.Instance.hoveredColor.x, SettingsMenu.Instance.hoveredColor.y, SettingsMenu.Instance.hoveredColor.z, 255);
+            color = new(SettingsMenu.Instance.selectedColor.x, SettingsMenu.Instance.selectedColor.y, SettingsMenu.Instance.selectedColor.z, 255);
             maxFpsText.color = color / 255;
             maxFpsText.transform.parent.GetComponent<TMP_Text>().color = color / 255;
             maxFpsText.transform.parent.GetComponent<UiAnimationHelper>().canBeChangable = true;
@@ -222,7 +222,7 @@ public class GraphicsMenu : MonoBehaviour
         else
         {
             resolutionIndex = lastResolutionIndex;
-            
+
 
             fullScreenText.text = Screen.fullScreen ? "On" : "Off";
             lastfullScreenText.text = fullScreenText.text;
@@ -262,16 +262,22 @@ public class GraphicsMenu : MonoBehaviour
             vSyncText.text = "Off";
             QualitySettings.vSyncCount = 0;
             canSetTargetFPS = true;
-            SetTargetFPSIndex();
         }
         else
         {
             vSyncText.text = "On";
             QualitySettings.vSyncCount = 1;
             canSetTargetFPS = false;
-            SetTargetFPSIndex();
-            maxFpsText.text = "Unlimited";
+
+            // dirty way to do this but for now i'll leave it like this
+            string refreshRate = Screen.resolutions[0].refreshRateRatio.ToString();
+            int targetRefreshRate = (int)float.Parse(refreshRate);
+            Application.targetFrameRate = targetRefreshRate;
+            maxFpsText.text = targetRefreshRate + " FPS";
+            //maxFpsText.text = "Unlimited";
         }
+
+        SetTargetFPSIndex(true);
     }
 
     public void SetFpsValue()
@@ -297,7 +303,7 @@ public class GraphicsMenu : MonoBehaviour
         vSyncText.text = "On";
         QualitySettings.vSyncCount = 1;
         canSetTargetFPS = false;
-        SetTargetFPSIndex();
+        SetTargetFPSIndex(true);
         maxFpsText.text = "Unlimited";
 
         fpsText.text = "Off";
