@@ -6,11 +6,13 @@ using UnityEngine;
 public class Bullet : NetworkBehaviour
 {
     [HideInInspector] public float bulletDamage;
-    [HideInInspector] public int enemiesTouched = 0;                // if a bullet has already hit an enemy we dont do that same amount of damage to the zombie nearby
+    [HideInInspector] public int enemiesTouched = 0;                // if a bullet has already hit an enemy we don't do that same amount of damage to the zombie nearby
     [HideInInspector] public GameObject playerWhoShotTheBullet;     // to keep track of the player kills
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!IsServer) return; // Ensure this logic runs only on the server
+
         if (other.gameObject.CompareTag("Zombie"))
         {
             if (other.gameObject != null)
@@ -38,6 +40,8 @@ public class Bullet : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
+
         if (!IsServer)
         {
             enabled = false;
@@ -63,10 +67,16 @@ public class Bullet : NetworkBehaviour
                 Debug.LogWarning("Attempted to despawn a bullet that is not spawned.");
             }
         }
+        else
+        {
+            Debug.LogError("Attempted to destroy bullet on a non-server instance.");
+        }
     }
 
     private void OnBecameInvisible()
     {
+        if (!IsServer) return; // Ensure this logic runs only on the server
+
         Debug.Log("Bullet became invisible, attempting to destroy.");
         DestroyBullet();
     }
