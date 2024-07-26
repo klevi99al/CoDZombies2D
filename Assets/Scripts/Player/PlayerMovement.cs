@@ -269,7 +269,7 @@ public class PlayerMovement : NetworkBehaviour
             z = 180 - z;
         }
 
-        Debug.Log(z);
+        //Debug.Log(z);
 
         playerHands.transform.localEulerAngles = new(x, y, z);
     }

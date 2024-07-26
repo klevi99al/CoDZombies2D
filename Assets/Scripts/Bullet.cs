@@ -38,19 +38,36 @@ public class Bullet : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if(!IsServer) enabled = false;
+        if (!IsServer)
+        {
+            enabled = false;
+            return;
+        }
+
+        Debug.Log("Bullet spawned successfully on the server.");
     }
 
     private void DestroyBullet()
     {
         if (IsServer)
         {
-            GetComponent<NetworkObject>().Despawn();
+            NetworkObject networkObject = GetComponent<NetworkObject>();
+
+            if (networkObject.IsSpawned)
+            {
+                Debug.Log("Despawning bullet.");
+                networkObject.Despawn();
+            }
+            else
+            {
+                Debug.LogWarning("Attempted to despawn a bullet that is not spawned.");
+            }
         }
     }
 
     private void OnBecameInvisible()
     {
+        Debug.Log("Bullet became invisible, attempting to destroy.");
         DestroyBullet();
     }
 }
