@@ -78,6 +78,16 @@ public class PlayerMovement : NetworkBehaviour
         playerAnimator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         boxCollider = transform.GetComponent<BoxCollider>();
         StartCoroutine(HandlePlayerFootStepSounds());
+        SetPlayerControls();
+    }
+
+    private void SetPlayerControls()
+    {
+        moveRight  = PlayerSettingsLoader.Instance.moveRightKey;
+        moveLeft   = PlayerSettingsLoader.Instance.moveLeftKey;
+        jumpKey    = PlayerSettingsLoader.Instance.jumpKey;
+        slideKey   = PlayerSettingsLoader.Instance.slideKey;
+        useButton  = PlayerSettingsLoader.Instance.useKey;
     }
 
     private void Update()

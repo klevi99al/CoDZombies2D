@@ -4889,9 +4889,9 @@ MonoBehaviour:
   - {fileID: 6657414491966970555}
   - {fileID: 6657414491440326727}
   - {fileID: 2352733371494309049}
-  - {fileID: 6657414492229707113}
   - {fileID: 6657414493095681982}
   - {fileID: 6657414492080567441}
+  - {fileID: 2352733371494309049}
 --- !u!1 &4036081983134612195
 GameObject:
   m_ObjectHideFlags: 0
@@ -5082,7 +5082,6 @@ GameObject:
   - component: {fileID: 6657414491404601644}
   - component: {fileID: 6657414491404601646}
   - component: {fileID: 6657414491404601645}
-  - component: {fileID: 7025761321544410027}
   - component: {fileID: 706525326086170165}
   m_Layer: 9
   m_Name: Laststand
@@ -5145,27 +5144,6 @@ MonoBehaviour:
   canShowProgressbar: 0
   playerInReviveTrigger: 0
   activator: {fileID: 0}
---- !u!95 &7025761321544410027
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6657414491404601643}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &706525326086170165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5705,8 +5683,8 @@ GameObject:
   - component: {fileID: 6657414492229707116}
   - component: {fileID: 6657414492229707115}
   - component: {fileID: 6657414492229707114}
-  - component: {fileID: 2498395143193543714}
   - component: {fileID: 1758173462446287732}
+  - component: {fileID: 2498395143193543714}
   m_Layer: 0
   m_Name: Player_0_Slide
   m_TagString: Untagged
@@ -5802,20 +5780,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2498395143193543714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6657414492229707113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 6657414492229707114}
 --- !u!114 &1758173462446287732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5847,6 +5811,20 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &2498395143193543714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657414492229707113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 6657414492229707114}
 --- !u!1 &6657414492319529313
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,8 +6459,8 @@ GameObject:
   - component: {fileID: 6657414493095681983}
   - component: {fileID: 6657414493095681969}
   - component: {fileID: 6657414493095681968}
-  - component: {fileID: 8706035653729617916}
   - component: {fileID: 5264043618918305969}
+  - component: {fileID: 8706035653729617916}
   m_Layer: 0
   m_Name: DrinkAnimation_0
   m_TagString: Untagged
@@ -6579,20 +6557,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8706035653729617916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6657414493095681982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList: []
-  m_Animator: {fileID: 6657414493095681969}
 --- !u!114 &5264043618918305969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6624,3 +6588,17 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &8706035653729617916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657414493095681982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 6657414493095681969}

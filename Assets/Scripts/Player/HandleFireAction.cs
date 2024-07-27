@@ -89,6 +89,17 @@ public class HandleFireAction : NetworkBehaviour
         weaponEmpty = transform.GetChild(1).gameObject;
 
         player = transform.parent.parent.gameObject;
+
+        SetPlayerControls();
+    }
+
+    private void SetPlayerControls()
+    {
+        fireKey     = PlayerSettingsLoader.Instance.fireKey;
+        reloadKey   = PlayerSettingsLoader.Instance.reloadKey;
+        grenadeKey  = PlayerSettingsLoader.Instance.throwPrimaryKey;
+        nextWeapon  = PlayerSettingsLoader.Instance.nextWeaponKey;
+        knifeKey    = PlayerSettingsLoader.Instance.meleeKey;
     }
 
     private void Update()
@@ -150,7 +161,7 @@ public class HandleFireAction : NetworkBehaviour
             {
                 if (canThrowGranade && granadesNumber > 0)
                 {
-                    StartCoroutine(HandleThrowingGranade());
+                    ThrowGranadeServerRpc();
                 }
             }
 
@@ -182,6 +193,12 @@ public class HandleFireAction : NetworkBehaviour
         HUD.Instance.UpdateAmmoHUD(weaponScript.clipAmmo, weaponScript.reserveAmmo);
     }
 
+    [ServerRpc]
+    public void ThrowGranadeServerRpc()
+    {
+        StartCoroutine(HandleThrowingGranade());
+    }
+
     private IEnumerator HandleThrowingGranade()
     {
         granadesNumber--;
@@ -191,7 +208,7 @@ public class HandleFireAction : NetworkBehaviour
         isThrowingGrenade = true;
 
         granadeAnimator.SetBool("ShouldThrowGranade", true);
-        StartCoroutine(ThrowTheGranade());
+        StartCoroutine(ThrowTheGrenade());
         yield return new WaitForSeconds(granadeAnimationTimer);
         granadeAnimator.SetBool("ShouldThrowGranade", false);
 
@@ -200,15 +217,34 @@ public class HandleFireAction : NetworkBehaviour
         canPerformActions = true;
     }
 
-    private IEnumerator ThrowTheGranade()
+    private IEnumerator ThrowTheGrenade()
     {
-        GameObject granade = Instantiate(granadePrefab, granadeSpawnPoint.position, Quaternion.Euler(0, 0, -90), bulletHolder);
-        granade.GetComponent<Rigidbody>().AddForce(primaryHand.transform.right * 20, ForceMode.Impulse);
+        // Instantiate the grenade on the server
+        GameObject grenade = Instantiate(granadePrefab, granadeSpawnPoint.position, Quaternion.Euler(0, 0, -90), bulletHolder);
+        NetworkObject grenadeNetworkObject = grenade.GetComponent<NetworkObject>();
+        // Spawn the grenade over the network
+        grenadeNetworkObject.Spawn();
+
+        // Add force to the grenade on the server
+        grenade.GetComponent<Rigidbody>().AddForce(primaryHand.transform.right * 20, ForceMode.Impulse);
+
         yield return new WaitForSeconds(1.5f);
-        GameObject explosion = Instantiate(grenadeExplosion, granade.transform.position, Quaternion.identity, bulletHolder);
+
+        // Instantiate the explosion on the server
+        GameObject explosion = Instantiate(grenadeExplosion, grenade.transform.position, Quaternion.identity, bulletHolder);
+        NetworkObject explosionNetworkObject = explosion.GetComponent<NetworkObject>();
+        // Spawn the explosion over the network
+        explosionNetworkObject.Spawn();
         explosion.GetComponent<GrenadeExplosion>().granadeThrower = transform.GetComponentInParent<PlayerMovement>().gameObject;
-        Destroy(granade);
-        Destroy(explosion, 1f);
+
+        // Ensure grenade and explosion are destroyed on the server and all clients
+        grenadeNetworkObject.Despawn();
+        Destroy(grenade);
+
+        yield return new WaitForSeconds(1f);
+        
+        explosionNetworkObject.Despawn();
+        Destroy(explosion);
     }
 
     private IEnumerator HandleKnifeAnimation()
