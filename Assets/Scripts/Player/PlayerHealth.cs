@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Netcode;
 
-public class PlayerHealth : NetworkBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public int lifeNumber = 1;
     public int playerHealth;

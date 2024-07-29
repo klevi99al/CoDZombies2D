@@ -44,11 +44,12 @@ public class UiAnimationHelper : MonoBehaviour
 
     private void Start()
     {
+        element = GetComponent<TMP_Text>();
+
         normalColor = SettingsMenu.Instance.normalColor;
         hoveredColor = SettingsMenu.Instance.hoveredColor;
         selectedColor = SettingsMenu.Instance.selectedColor;
 
-        element = GetComponent<TMP_Text>();
         if (transform.GetSiblingIndex() != 0)
         {
             if (isSetting)

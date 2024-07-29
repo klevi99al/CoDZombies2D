@@ -7,11 +7,11 @@ using TMPro;
 public class RoomItem : MonoBehaviour
 {
     public TMP_Text roomName;
-    LobbyManager manager;
+    LobbyManagerOld manager;
 
     private void Start()
     {
-        manager = FindObjectOfType<LobbyManager>();
+        manager = FindObjectOfType<LobbyManagerOld>();
     }
 
     public void SetRoomName(string room_name)

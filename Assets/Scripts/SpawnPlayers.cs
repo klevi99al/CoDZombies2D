@@ -1,33 +1,48 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Netcode;
+using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SpawnPlayers : NetworkBehaviour
+public class SpawnPlayers : MonoBehaviourPunCallbacks
 {
     [Header("References")]
     public GameObject[] players;
     public GameObject[] playerSpawnPoints;
 
-    public override void OnNetworkSpawn()
+    private void Start()
     {
-        if (IsServer)
+        SpawnAllPlayers();
+    }
+
+    private void SpawnAllPlayers()
+    {
+        int playerCount = PhotonNetwork.PlayerList.Length;
+
+        for (int i = 0; i < playerCount; i++)
         {
-            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+            // Calculate spawn position for each player
+            Vector3 spawnPosition = playerSpawnPoints[i % playerSpawnPoints.Length].transform.position;
+
+            // Determine if this is the local player's spawn
+            if (PhotonNetwork.LocalPlayer.IsMasterClient)
+            {
+                // Spawn the local player's player object at index 0
+                GameObject playerObject = PhotonNetwork.Instantiate("Photon/"+players[i].name, spawnPosition, Quaternion.identity);
+                playerObject.transform.SetParent(transform);
+                playerObject.transform.SetSiblingIndex(0);
+            }
+            else
+            {
+                // Spawn for other players with appropriate indexing
+                GameObject playerObject = PhotonNetwork.Instantiate("Photon/" + players[i].name, spawnPosition, Quaternion.identity);
+                playerObject.transform.SetParent(transform);
+                playerObject.transform.SetSiblingIndex(i + 1); // Set index based on player number
+            }
         }
     }
 
-
-    private void SceneManager_OnLoadEventCompleted(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    public override void OnJoinedRoom()
     {
-        for (int i = 0; i < NetworkManager.Singleton.ConnectedClientsIds.Count; i++)
-        {
-            ulong clientId = NetworkManager.Singleton.ConnectedClientsIds[i];
-            GameObject player = Instantiate(players[i], playerSpawnPoints[i].transform.position, Quaternion.Euler(Vector3.zero), transform);
-            player.transform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
-            player.GetComponent<NetworkObject>().TrySetParent(transform);
-        }
+        base.OnJoinedRoom();
+        SpawnAllPlayers();
     }
 }

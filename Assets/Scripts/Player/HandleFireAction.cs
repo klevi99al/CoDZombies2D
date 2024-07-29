@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using System.Globalization;
-using Unity.Netcode;
+using Photon.Pun;
 
-public class HandleFireAction : NetworkBehaviour
+public class HandleFireAction : MonoBehaviour
 {
     [Header("Keycodes")]
     public KeyCode fireKey;
@@ -63,6 +62,8 @@ public class HandleFireAction : NetworkBehaviour
     private PlayerInventory inventory;
     private PlayerReferences references;
 
+    private PhotonView photonView;
+
     private bool canShoot = true;
     private readonly bool canKnife = true;
     private readonly bool canReload = true;
@@ -74,6 +75,7 @@ public class HandleFireAction : NetworkBehaviour
 
     private void Start()
     {
+        photonView = GetComponentInParent<PhotonView>();
         granadesHolder = HUD.Instance.granadesHolder.transform;
         audioSource = GetComponent<AudioSource>();
         weaponScript = transform.GetChild(0).GetComponent<Weapon_Script>();
@@ -104,8 +106,7 @@ public class HandleFireAction : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwner) return;
-
+        if (!photonView.IsMine) return;
         if (canPerformActions && !StaticVariables.gameIsPaused)
         {
             if (Input.GetKey(fireKey))
@@ -117,7 +118,7 @@ public class HandleFireAction : NetworkBehaviour
                     {
                         canShoot = false;
                         StartCoroutine(CoolDownBeforeYouShootAgain(weaponScript.coolDownShoot));
-                        WeaponFireServerRpc();
+                        WeaponFire();
                     }
                 }
             }
@@ -129,7 +130,7 @@ public class HandleFireAction : NetworkBehaviour
                     weaponScript = transform.GetChild(0).GetComponent<Weapon_Script>();
                     canShoot = false;
                     StartCoroutine(CoolDownBeforeYouShootAgain(weaponScript.coolDownShoot));
-                    WeaponFireServerRpc();
+                    WeaponFire();
                 }
             }
 
@@ -161,7 +162,7 @@ public class HandleFireAction : NetworkBehaviour
             {
                 if (canThrowGranade && granadesNumber > 0)
                 {
-                    ThrowGranadeServerRpc();
+                    ThrowGranade();
                 }
             }
 
@@ -193,8 +194,7 @@ public class HandleFireAction : NetworkBehaviour
         HUD.Instance.UpdateAmmoHUD(weaponScript.clipAmmo, weaponScript.reserveAmmo);
     }
 
-    [ServerRpc]
-    public void ThrowGranadeServerRpc()
+    public void ThrowGranade()
     {
         StartCoroutine(HandleThrowingGranade());
     }
@@ -221,29 +221,18 @@ public class HandleFireAction : NetworkBehaviour
     {
         // Instantiate the grenade on the server
         GameObject grenade = Instantiate(granadePrefab, granadeSpawnPoint.position, Quaternion.Euler(0, 0, -90), bulletHolder);
-        NetworkObject grenadeNetworkObject = grenade.GetComponent<NetworkObject>();
-        // Spawn the grenade over the network
-        grenadeNetworkObject.Spawn();
-
-        // Add force to the grenade on the server
         grenade.GetComponent<Rigidbody>().AddForce(primaryHand.transform.right * 20, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1.5f);
 
         // Instantiate the explosion on the server
         GameObject explosion = Instantiate(grenadeExplosion, grenade.transform.position, Quaternion.identity, bulletHolder);
-        NetworkObject explosionNetworkObject = explosion.GetComponent<NetworkObject>();
-        // Spawn the explosion over the network
-        explosionNetworkObject.Spawn();
         explosion.GetComponent<GrenadeExplosion>().granadeThrower = transform.GetComponentInParent<PlayerMovement>().gameObject;
 
-        // Ensure grenade and explosion are destroyed on the server and all clients
-        grenadeNetworkObject.Despawn();
         Destroy(grenade);
 
         yield return new WaitForSeconds(1f);
-        
-        explosionNetworkObject.Despawn();
+
         Destroy(explosion);
     }
 
@@ -306,14 +295,13 @@ public class HandleFireAction : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
-    private void WeaponFireServerRpc()
+    private void WeaponFire()
     {
-        StartCoroutine(WeaponFire());
+        StartCoroutine(WeaponFireCoroutine());
 
     }
 
-    private IEnumerator WeaponFire()
+    private IEnumerator WeaponFireCoroutine()
     {
         if (weaponScript.clipAmmo > 0)
         {
@@ -351,8 +339,6 @@ public class HandleFireAction : NetworkBehaviour
                     bullet = new GameObject("Random Bullet Name");
                     break;
             }
-
-            bullet.GetComponent<NetworkObject>().Spawn(true);
 
             weaponScript.clipAmmo -= amount;
             HUD.Instance.UpdateAmmoHUD(weaponScript.clipAmmo, weaponScript.reserveAmmo);

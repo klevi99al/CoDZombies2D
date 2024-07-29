@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
-using Unity.Netcode;
+using Photon;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviourPunCallbacks
 {
     [Header("Audio Resources")]
     public AudioClip clickSound;
@@ -69,9 +71,25 @@ public class MainMenu : MonoBehaviour
     {
         if (playerIsSelected && mapIsSelected)
         {
-            NetworkManager.Singleton.SceneManager.LoadScene("MainGame", LoadSceneMode.Single);
-            //StaticVariables.isCoopGame = false;
-            //StartCoroutine(LoadingScreenProgress(selectedMapIndex));
+            // Connect to Photon if not already connected
+            if (!PhotonNetwork.IsConnected)
+            {
+                PhotonNetwork.ConnectUsingSettings();
+                PhotonNetwork.GameVersion = "1"; // Set the game version (optional)
+                return; // Exit as we are now waiting for the connection
+            }
+
+            // Create a temporary room for solo play
+            RoomOptions roomOptions = new()
+            {
+                IsVisible = false,
+                IsOpen = true,
+                MaxPlayers = 1
+            };
+
+            // Create or join the room
+            PhotonNetwork.JoinOrCreateRoom("SoloRoom", roomOptions, TypedLobby.Default);
+            PhotonNetwork.LoadLevel(1);
         }
     }
 

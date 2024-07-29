@@ -143,7 +143,7 @@ public class ZombieMovements : MonoBehaviour
         {
             zombieSpeed = tempSpeed;
         }
-        zombieRb.velocity = new Vector2(dirX * zombieSpeed, zombieRb.velocity.y);
+        zombieRb.linearVelocity = new Vector2(dirX * zombieSpeed, zombieRb.linearVelocity.y);
     }
 
     public void StartZombieTraversalMovement(Vector3 targetPosition)

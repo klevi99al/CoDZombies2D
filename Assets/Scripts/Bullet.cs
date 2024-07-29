@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : NetworkBehaviour
+public class Bullet : MonoBehaviour
 {
     [HideInInspector] public float bulletDamage;
     [HideInInspector] public int enemiesTouched = 0;                // if a bullet has already hit an enemy we don't do that same amount of damage to the zombie nearby
@@ -11,7 +8,6 @@ public class Bullet : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!IsServer) return; // Ensure this logic runs only on the server
 
         if (other.gameObject.CompareTag("Zombie"))
         {
@@ -38,46 +34,13 @@ public class Bullet : NetworkBehaviour
         }
     }
 
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-
-        if (!IsServer)
-        {
-            enabled = false;
-            return;
-        }
-
-        Debug.Log("Bullet spawned successfully on the server.");
-    }
-
     private void DestroyBullet()
     {
-        if (IsServer)
-        {
-            NetworkObject networkObject = GetComponent<NetworkObject>();
-
-            if (networkObject.IsSpawned)
-            {
-                Debug.Log("Despawning bullet.");
-                networkObject.Despawn();
-            }
-            else
-            {
-                Debug.LogWarning("Attempted to despawn a bullet that is not spawned.");
-            }
-        }
-        else
-        {
-            Debug.LogError("Attempted to destroy bullet on a non-server instance.");
-        }
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()
     {
-        if (!IsServer) return; // Ensure this logic runs only on the server
-
-        Debug.Log("Bullet became invisible, attempting to destroy.");
         DestroyBullet();
     }
 }

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
-
-public class PlayerMovement : NetworkBehaviour
+using Photon.Pun;
+public class PlayerMovement : MonoBehaviour
 {
     [Header("Body Parts")]
     public GameObject playerShoulder;
@@ -65,12 +64,14 @@ public class PlayerMovement : NetworkBehaviour
     private BoxCollider boxCollider;
     private Vector3 mouseOnScreen;
     private Vector2 positionOnScreen;
+    private PhotonView photonView;
     public readonly float playerZposition = -3.767f;
 
 
     private void Awake()
     {
         levelManager = GameObject.Find("LevelManager");
+        photonView = GetComponent<PhotonView>();
     }
 
     private void Start()
@@ -92,8 +93,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwner) return;
-
+        if (!photonView.IsMine) return;
         mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 
@@ -103,8 +103,8 @@ public class PlayerMovement : NetworkBehaviour
             HandlePlayerJump();
             HandlePlayerSlide();
             HandePlayerBodyRotation();
-            HandePlayerHeadRotationRpc();
-            HandlePlayerHandRotationRpc();
+            HandePlayerHeadRotation();
+            HandlePlayerHandRotation();
             IsGrounded();
             if (canJump == false)
             {
@@ -200,8 +200,7 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.Everyone)]
-    private void HandePlayerHeadRotationRpc()
+    private void HandePlayerHeadRotation()
     {
         if (!isDrinking)
         {
@@ -264,8 +263,7 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.Everyone)]
-    private void HandlePlayerHandRotationRpc()
+    private void HandlePlayerHandRotation()
     {
         Vector3 difference = mouseOnScreen - transform.position;
         difference.Normalize();

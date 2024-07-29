@@ -13,18 +13,12 @@ public class LobbyChat : MonoBehaviour
     public RectTransform chatRect;
     public Scrollbar chatScrollbar;
 
-    private LobbyManager lobbyManager;
-
-    private void Start()
-    {
-        lobbyManager = LobbyManager.Instance;
-    }
-
     public void SendMessage()
     {
         if (chatInputField.text == string.Empty || chatInputField.text == "") return;
         GameObject message = Instantiate(chatTextPrefab, container);
-        message.GetComponent<TMP_Text>().text = lobbyManager.playerName.text + ": " + chatInputField.text;
+        //message.GetComponent<TMP_Text>().text = lobbyManager.playerName.text + ": " + chatInputField.text;
+        message.GetComponent<TMP_Text>().text = " " + chatInputField.text;
         chatInputField.text = "";
 
         StopCoroutine(nameof(UpdateScroll));
@@ -41,10 +35,9 @@ public class LobbyChat : MonoBehaviour
 
     public void ClearChat()
     {
-        for(int i = 0; i < container.childCount; i++)
+        for (int i = 0; i < container.childCount; i++)
         {
             Destroy(container.GetChild(i).gameObject);
         }
-        lobbyManager.DeleteLobby();
     }
 }
