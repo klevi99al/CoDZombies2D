@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {   [Header("References")]
     public GameObject playersHolder;
+    public CameraScript cameraScript;
     public GameObject zombiesHolder;
     public GameObject effectsHolder;
     public GameObject powerupsHolder;

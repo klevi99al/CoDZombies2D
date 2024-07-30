@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    public static LobbyManager Instance { get; private set; }
+
     [Header("References")]
     public GameObject lobbyRoom;
     public GameObject startGameButton;
@@ -15,7 +17,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject connectedPlayerPrefab;
     public GameObject connectedPlayersHolder;
 
-
     private readonly string hostClosedLobby = "Disconnected from the lobby. Reason: Host Closed the room!";
     private readonly string hostKickedPlayer = "Disconnected from the lobby. Reason: You were kicked from the room";
 
@@ -24,6 +25,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         lobbySettings = GetComponentInParent<LobbySettings>();
     }
 
@@ -88,15 +99,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
         startGameButton.SetActive(false);
         UpdateConnectedPlayersList();
-
-        //PhotonNetwork.LoadLevel(1); // Uncomment this line to load a scene
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         ClearRoomListView();
         UpdateCachedRoomList(roomList);
-        //UpdateRoomListView();
+        UpdateRoomListView();
     }
 
     private void ClearRoomListView()
@@ -154,7 +163,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                // If the player is the master client, close the room and inform other players
                 PhotonNetwork.CurrentRoom.IsOpen = false;
                 PhotonNetwork.CurrentRoom.IsVisible = false;
                 Debug.Log("Room closed successfully.");
@@ -162,7 +170,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                // If the player is not the master client, just leave the room
                 PhotonNetwork.LeaveRoom();
                 Debug.Log("Left the room.");
             }
@@ -190,7 +197,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        //PhotonNetwork.JoinLobby();
+        PhotonNetwork.JoinLobby();
     }
 
     public override void OnJoinedLobby()
@@ -200,7 +207,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             startGameButton.SetActive(PhotonNetwork.PlayerList.Length > 1);
         }
@@ -231,7 +238,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Destroy(connectedPlayersHolder.transform.GetChild(i).gameObject);
         }
 
-        // Instantiate a new entry for each player in the room
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             GameObject playerListing = Instantiate(connectedPlayerPrefab, connectedPlayersHolder.transform);
@@ -253,6 +259,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void StartGame()
     {
-        PhotonNetwork.LoadLevel(1);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(1);
+        }
     }
 }

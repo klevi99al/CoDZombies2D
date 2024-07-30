@@ -75,7 +75,16 @@ public class HandleFireAction : MonoBehaviour
 
     private void Start()
     {
-        photonView = GetComponentInParent<PhotonView>();
+        if (!StaticVariables.isSoloGame)
+        {
+            if (photonView != null)
+            {
+                if (!photonView.IsMine)
+                {
+                    return;
+                }
+            }
+        }
         granadesHolder = HUD.Instance.granadesHolder.transform;
         audioSource = GetComponent<AudioSource>();
         weaponScript = transform.GetChild(0).GetComponent<Weapon_Script>();
@@ -106,7 +115,16 @@ public class HandleFireAction : MonoBehaviour
 
     private void Update()
     {
-        if (!photonView.IsMine) return;
+        if (!StaticVariables.isSoloGame)
+        {
+            if (photonView != null)
+            {
+                if (!photonView.IsMine)
+                {
+                    return;
+                }
+            }
+        }
         if (canPerformActions && !StaticVariables.gameIsPaused)
         {
             if (Input.GetKey(fireKey))

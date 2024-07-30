@@ -1,42 +1,54 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class CameraScript : MonoBehaviour
+public class CameraScript : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Vector3 offset;
-    [HideInInspector] public Transform playerTarget;
-    [SerializeField] private GameObject playersHolder;
+    public Transform playerTarget;
+    public Transform playersHolder;
 
     private void Start()
     {
-        CameraCheck();
-    }
-
-    private void CameraCheck()
-    {
-        GameObject currentPlayer;
-        for (int i = 0; i < playersHolder.transform.childCount; i++)
+        if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
         {
-            currentPlayer = playersHolder.transform.GetChild(i).gameObject;
-            if (i != StaticVariables.selectedCharacterIndex)
+            // Set the camera target for the master client
+            if (PhotonNetwork.IsMasterClient)
             {
-                currentPlayer.SetActive(false);
-            }
-            else
-            {
-                currentPlayer.SetActive(true);
-                currentPlayer.transform.SetSiblingIndex(0);
-                playerTarget = currentPlayer.transform;
-                Debug.Log("Spawned from solo");
+                SetCameraTarget(playersHolder.GetChild(0)); // Assuming master client is the first child
             }
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (playersHolder.transform.childCount > 0)
+        if (playerTarget != null)
         {
-            playerTarget = playersHolder.transform.GetChild(0);
-            if (playerTarget != null) transform.position = playerTarget.position + offset;
+            transform.position = playerTarget.position + offset;
+        }
+        else
+        {
+            if (playersHolder.childCount > 0)
+            {
+                SetCameraTarget(playersHolder.GetChild(0));
+            }
+        }
+    }
+
+    private void SetCameraTarget(Transform target)
+    {
+        playerTarget = target;
+
+        // Inform other clients of the camera target change
+        photonView.RPC(nameof(UpdateCameraTarget), RpcTarget.Others, target.GetComponent<PhotonView>().ViewID);
+    }
+
+    [PunRPC]
+    private void UpdateCameraTarget(int targetViewID)
+    {
+        PhotonView targetView = PhotonView.Find(targetViewID);
+        if (targetView != null)
+        {
+            playerTarget = targetView.transform;
         }
     }
 }

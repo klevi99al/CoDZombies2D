@@ -12,6 +12,7 @@ public static class StaticVariables
     public static bool nukedImageActive = false;
     public static bool isAnnouncerSpeaking = false;
     public static bool levelInBetweenRounds = false;
+    public static bool isSoloGame = false;
     public static int connectedPlayersNumber = 0;
     public static int selectedCharacterIndex = 0;
     public static int roundNumber = 1;

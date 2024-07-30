@@ -67,6 +67,11 @@ public class MainMenu : MonoBehaviourPunCallbacks
         }
     }
 
+    public void SetIsSoloGame(bool solo)
+    {
+        StaticVariables.isSoloGame = solo;
+    }
+
     public void LaunchSingleplayer()
     {
         if (playerIsSelected && mapIsSelected)
@@ -89,6 +94,7 @@ public class MainMenu : MonoBehaviourPunCallbacks
 
             // Create or join the room
             PhotonNetwork.JoinOrCreateRoom("SoloRoom", roomOptions, TypedLobby.Default);
+            SetIsSoloGame(true);
             PhotonNetwork.LoadLevel(1);
         }
     }

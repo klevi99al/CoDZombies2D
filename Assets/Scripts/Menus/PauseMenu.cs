@@ -83,4 +83,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         gameOverCutscene.EndGamePlayCutscene();
     }
+
+    public void ExitGame()
+    {
+        LobbyManager.Instance.CloseRoom();
+    }
 }

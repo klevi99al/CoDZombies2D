@@ -41,6 +41,10 @@ MonoBehaviour:
   - RespawnSpaceship
   - LeaveRoom
   - NotifyPlayerNicknameChange
+  - SetCameraTargetRPC
+  - UpdateCameraTarget
+  - NotifyPlayersOfSpawn
+  - UpdateSlideState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

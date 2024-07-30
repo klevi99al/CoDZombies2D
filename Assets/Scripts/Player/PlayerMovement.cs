@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject secondPlayerHand;
     public GameObject playerHands;
     public GameObject playerNeck;
+    public SpriteRenderer slidingSprite;
 
     [Header("Animators")]
     public Animator drinkAnimator;
@@ -65,8 +66,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 mouseOnScreen;
     private Vector2 positionOnScreen;
     private PhotonView photonView;
+    private NetworkedVariables networkedVariables;
     public readonly float playerZposition = -3.767f;
-
+    public SpriteRenderer[] allSprites;
 
     private void Awake()
     {
@@ -76,24 +78,36 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        allSprites = GetComponentsInChildren<SpriteRenderer>();
         playerAnimator = transform.GetChild(1).GetChild(0).GetComponent<Animator>();
         boxCollider = transform.GetComponent<BoxCollider>();
+        networkedVariables = GetComponent<NetworkedVariables>();
         StartCoroutine(HandlePlayerFootStepSounds());
         SetPlayerControls();
+        SetPlayerSlideVariables(true);
     }
 
     private void SetPlayerControls()
     {
-        moveRight  = PlayerSettingsLoader.Instance.moveRightKey;
-        moveLeft   = PlayerSettingsLoader.Instance.moveLeftKey;
-        jumpKey    = PlayerSettingsLoader.Instance.jumpKey;
-        slideKey   = PlayerSettingsLoader.Instance.slideKey;
-        useButton  = PlayerSettingsLoader.Instance.useKey;
+        moveRight = PlayerSettingsLoader.Instance.moveRightKey;
+        moveLeft = PlayerSettingsLoader.Instance.moveLeftKey;
+        jumpKey = PlayerSettingsLoader.Instance.jumpKey;
+        slideKey = PlayerSettingsLoader.Instance.slideKey;
+        useButton = PlayerSettingsLoader.Instance.useKey;
     }
 
     private void Update()
     {
-        if (!photonView.IsMine) return;
+        if (!StaticVariables.isSoloGame)
+        {
+            if (photonView != null)
+            {
+                if (!photonView.IsMine)
+                {
+                    return;
+                }
+            }
+        }
         mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 
@@ -123,10 +137,14 @@ public class PlayerMovement : MonoBehaviour
                 isSliding = true;
                 canSlide = false;
                 slideSource.Play();
+
                 SetPlayerSlideVariables(false);
-                slideAnimator.gameObject.SetActive(true);
+
                 slideAnimator.SetBool("Slide", true);
+
                 playerRigidbody.AddForce(transform.forward * slideForce, ForceMode.Acceleration);
+
+                networkedVariables.SetSlidingState(true); // Notify network
             }
         }
     }
@@ -136,24 +154,48 @@ public class PlayerMovement : MonoBehaviour
         canMove = state;
         references.playerActions.canPerformActions = state;
 
-        // we disable the sprites since if we disable the gameobject itself, the player might have shot and spawn a bullet, it would also stop the bullet movement and break
-        // everything else from functioning
-
-        playerNeck.GetComponent<SpriteRenderer>().enabled = state;
-        firstPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
-        secondPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
-
-        // we need this check when the player has no weapons so it doesnt break
-        if (GetComponent<PlayerInventory>().playerWeapons.Count > 0)
+        // Set alpha values for sprites based on sliding state
+        foreach (var spriteRenderer in allSprites)
         {
-            firstPlayerHand.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = state;
-        }
-
-        for (int i = 0; i < references.playerHealth.playerSprites.Length; i++)
-        {
-            references.playerHealth.playerSprites[i].enabled = state;
+            Color color = spriteRenderer.color;
+            if (spriteRenderer != slidingSprite)
+            {
+                
+                color.a = state ? 255f : 0;
+            }
+            else
+            {
+                color.a = state ? 0 : 255;
+            }
+            spriteRenderer.color = color;
         }
     }
+
+
+    //public void SetPlayerSlideVariables(bool state)
+    //{
+
+    //    canMove = state;
+    //    references.playerActions.canPerformActions = state;
+
+    //    // we disable the sprites since if we disable the gameobject itself, the player might have shot and spawn a bullet, it would also stop the bullet movement and break
+    //    // everything else from functioning
+
+    //    playerNeck.GetComponent<SpriteRenderer>().enabled = state;
+    //    firstPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
+    //    secondPlayerHand.GetComponent<SpriteRenderer>().enabled = state;
+
+    //    // we need this check when the player has no weapons so it doesnt break
+    //    if (GetComponent<PlayerInventory>().playerWeapons.Count > 0)
+    //    {
+    //        firstPlayerHand.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = state;
+    //    }
+
+    //    for (int i = 0; i < references.playerHealth.playerSprites.Length; i++)
+    //    {
+    //        references.playerHealth.playerSprites[i].enabled = state;
+    //    }
+    //}
 
     public bool IsGrounded()
     {

@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819381987700769}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.0000000018626451, y: 0.13700032, z: 0.0170002}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,11 +33,10 @@ Transform:
   m_Children:
   - {fileID: 430819382978173709}
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &430819381987700782
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -50,10 +50,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &430819381987700783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71,6 +73,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -131,6 +136,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382006096916}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.81619877, y: 0.06379986, z: -0.18663411}
   m_LocalScale: {x: 0.23923223, y: 0.2371355, z: 0.100000195}
@@ -138,7 +144,6 @@ Transform:
   m_Children:
   - {fileID: 430819382747567869}
   m_Father: {fileID: 7033070015680745742}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819382006096913
 SpriteRenderer:
@@ -157,6 +162,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -210,16 +218,19 @@ MonoBehaviour:
   reserveAmmo: 72
   damage: 50
   coolDownShoot: 0.105
-  shootSound: {fileID: 8300000, guid: 22af53dada0474f40b843cc34f603343, type: 3}
-  reloadSound: {fileID: 8300000, guid: 329d50d04ab51a747b74c04b1ea6c66f, type: 3}
   hudImage: {fileID: 3049475726566474477, guid: 0feb0517ced55694094801fe24a30210, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 22af53dada0474f40b843cc34f603343, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 329d50d04ab51a747b74c04b1ea6c66f, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819382297197555
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,13 +254,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382297197555}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.05, y: 0.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819382403179938}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819382303749123
 GameObject:
@@ -274,13 +285,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382303749123}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.876, y: 0.513, z: 0.21999834}
   m_LocalScale: {x: 1.101185, y: 1.0476894, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819383450790269}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819382314651710
 GameObject:
@@ -307,6 +318,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382314651710}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7330012, y: 0.019000068, z: 0.018000063}
   m_LocalScale: {x: 0.18287377, y: 0.16263823, z: 1}
@@ -314,7 +326,6 @@ Transform:
   m_Children:
   - {fileID: 430819382374865238}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
 --- !u!212 &430819382314651707
 SpriteRenderer:
@@ -333,6 +344,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -386,16 +400,19 @@ MonoBehaviour:
   reserveAmmo: 63
   damage: 70
   coolDownShoot: 0.18
-  shootSound: {fileID: 8300000, guid: 6bcfcf2268d75fc44a5bc90f018c7010, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 9216808236193890222, guid: 47a404cab4d743940b73cfcd38434b59, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 6bcfcf2268d75fc44a5bc90f018c7010, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819382331038994
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +438,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382331038994}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.0750003, y: 0.022100225, z: -0.01499993}
   m_LocalScale: {x: 0.6182072, y: 0.55183333, z: 0.10000016}
@@ -428,7 +446,6 @@ Transform:
   m_Children:
   - {fileID: 430819383721235311}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819382331039007
 SpriteRenderer:
@@ -447,6 +464,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -500,16 +520,19 @@ MonoBehaviour:
   reserveAmmo: 54
   damage: 250
   coolDownShoot: 0.7
-  shootSound: {fileID: 8300000, guid: 46aa393814aa18445a4ca5f95cf8040f, type: 3}
-  reloadSound: {fileID: 8300000, guid: 0c4f594cdeeb8b64b9764eb8abdd39f9, type: 3}
   hudImage: {fileID: 7015035771604378451, guid: ca652e24197ceaf46ba7b91c1e85709a, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 46aa393814aa18445a4ca5f95cf8040f, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 0c4f594cdeeb8b64b9764eb8abdd39f9, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 4
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819382374865239
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,13 +556,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382374865239}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.392, y: 0.664, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819382314651709}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819382403179939
 GameObject:
@@ -566,6 +589,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382403179939}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.80499977, y: -0.061000332, z: 0.0009998642}
   m_LocalScale: {x: 0.13933837, y: 0.15171938, z: 1}
@@ -573,7 +597,6 @@ Transform:
   m_Children:
   - {fileID: 430819382297197554}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819382403179936
 SpriteRenderer:
@@ -592,6 +615,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -645,16 +671,19 @@ MonoBehaviour:
   reserveAmmo: 240
   damage: 150
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 9ceb40cbad722bb4892694f2a4657c0e, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1dd15a229e966704ba1030825a276682, type: 3}
   hudImage: {fileID: 4837573121604705979, guid: 54abdd215743f984d8401b31925b535c, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 9ceb40cbad722bb4892694f2a4657c0e, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1dd15a229e966704ba1030825a276682, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819382417579858
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,13 +707,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382417579858}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.876, y: 0.513, z: 0.21999834}
   m_LocalScale: {x: 1.101185, y: 1.0476894, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819383066047779}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819382747567870
 GameObject:
@@ -709,13 +738,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382747567870}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.339, y: 0.531, z: 0.32999986}
   m_LocalScale: {x: 1.2300601, y: 1.0988599, z: 1.4999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819382006096915}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819382862023414
 GameObject:
@@ -742,13 +771,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382862023414}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819382862023412
 SpriteRenderer:
@@ -767,6 +796,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -804,7 +836,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &430819382862023413
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -818,10 +850,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &430819382978173710
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,13 +880,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819382978173710}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.621, y: 0.092, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819381987700768}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819382978173708
 SpriteRenderer:
@@ -871,6 +905,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -929,13 +966,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383005605572}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.003, y: 0.344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819383618373575}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819383066047780
 GameObject:
@@ -962,6 +999,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383066047780}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.9929995, y: -0.0059997886, z: -0.01499993}
   m_LocalScale: {x: 0.1514323, y: 0.16075376, z: 0.10000016}
@@ -969,7 +1007,6 @@ Transform:
   m_Children:
   - {fileID: 430819382417579857}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819383066047777
 SpriteRenderer:
@@ -988,6 +1025,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1041,16 +1081,19 @@ MonoBehaviour:
   reserveAmmo: 56
   damage: 250
   coolDownShoot: 0.4
-  shootSound: {fileID: 8300000, guid: 46aa393814aa18445a4ca5f95cf8040f, type: 3}
-  reloadSound: {fileID: 8300000, guid: 0c4f594cdeeb8b64b9764eb8abdd39f9, type: 3}
   hudImage: {fileID: 2278283148090951310, guid: 08af4fcc9ae3efb408c0de81215eb2fb, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 46aa393814aa18445a4ca5f95cf8040f, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 0c4f594cdeeb8b64b9764eb8abdd39f9, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 3
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819383404304856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,13 +1117,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383404304856}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.608, y: 1.092, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819384057487184}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819383450790270
 GameObject:
@@ -1107,6 +1150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383450790270}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.8189997, y: -0.0059997886, z: -0.01499993}
   m_LocalScale: {x: 0.1514323, y: 0.16075376, z: 0.10000016}
@@ -1114,7 +1158,6 @@ Transform:
   m_Children:
   - {fileID: 430819382303749122}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819383450790267
 SpriteRenderer:
@@ -1133,6 +1176,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1186,16 +1232,19 @@ MonoBehaviour:
   reserveAmmo: 20
   damage: 220
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 3be2b9b1f9ecfec43b27078071ca00ec, type: 3}
-  reloadSound: {fileID: 8300000, guid: 0120902936ef8014da0d0d6113301ff4, type: 3}
   hudImage: {fileID: 5052196408993854114, guid: 7c380df9096f4664ebe0ef250ebfb487, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 3be2b9b1f9ecfec43b27078071ca00ec, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 0120902936ef8014da0d0d6113301ff4, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 2
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819383618373592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1270,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383618373592}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.8260035, y: -0.039000496, z: 0.0009998642}
   m_LocalScale: {x: 0.34053114, y: 0.35897812, z: 1}
@@ -1228,7 +1278,6 @@ Transform:
   m_Children:
   - {fileID: 430819383005605571}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430819383618373573
 SpriteRenderer:
@@ -1247,6 +1296,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1300,16 +1352,19 @@ MonoBehaviour:
   reserveAmmo: 300
   damage: 100
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: f996db8eac09601409fc80cd86c9f049, type: 3}
-  reloadSound: {fileID: 8300000, guid: e4391d20e84ddf449a31d26b9e1a52bf, type: 3}
   hudImage: {fileID: 792172713292141745, guid: aac139f076e57a04b8a82804a6032b8c, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f996db8eac09601409fc80cd86c9f049, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: e4391d20e84ddf449a31d26b9e1a52bf, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &430819383645710004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1390,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383645710004}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1342,7 +1398,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025963332389}
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &430819383645710001
 BoxCollider:
@@ -1352,9 +1407,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383645710004}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.8700008, y: 0.74008465, z: 1.8694756}
   m_Center: {x: 5.1527132e-17, y: -0.75351286, z: 0.12862587}
 --- !u!114 &430819383645710002
@@ -1397,13 +1460,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819383721235296}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.062, y: 0.268, z: 0.21999834}
   m_LocalScale: {x: 1.101185, y: 1.0476894, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819382331038993}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &430819384057487185
 GameObject:
@@ -1430,6 +1493,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430819384057487185}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.83360237, y: 0.028599754, z: 0.018000063}
   m_LocalScale: {x: 0.12752476, y: 0.123355255, z: 1}
@@ -1437,7 +1501,6 @@ Transform:
   m_Children:
   - {fileID: 430819383404304839}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 180, y: 180, z: 180}
 --- !u!212 &430819384057487198
 SpriteRenderer:
@@ -1456,6 +1519,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1509,16 +1575,19 @@ MonoBehaviour:
   reserveAmmo: 125
   damage: 90
   coolDownShoot: 0.35
-  shootSound: {fileID: 8300000, guid: 4b9c65094ea45ab42a21caf5bf7c1152, type: 3}
-  reloadSound: {fileID: 8300000, guid: 415f93f87f5887a468ca6a344aa5be20, type: 3}
   hudImage: {fileID: 7463470129525435413, guid: c97695fa5ce4a0740bd7593601a71275, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 4b9c65094ea45ab42a21caf5bf7c1152, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 415f93f87f5887a468ca6a344aa5be20, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.055
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &7033070015312827772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,13 +1611,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015312827772}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.6460006, y: -0.0049996376, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015680745742}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7033070015593088319
 GameObject:
@@ -1569,6 +1638,7 @@ GameObject:
   - component: {fileID: 7033070015593088294}
   - component: {fileID: 7033070015593088295}
   - component: {fileID: 7033070015593088277}
+  - component: {fileID: 789905320404520021}
   m_Layer: 9
   m_Name: Player_0
   m_TagString: Player
@@ -1583,6 +1653,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015593088319}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 88.43, y: -2.33, z: -4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1598,7 +1669,6 @@ Transform:
   - {fileID: 430819382862023411}
   - {fileID: 430819381987700768}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!212 &7033070015593088308
 SpriteRenderer:
@@ -1617,6 +1687,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1682,6 +1755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a63b0b9edc2e1e47873a96cd47f566b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBeingPaped: {fileID: 0}
   playerWeapons: []
   playerPerks: []
 --- !u!114 &7033070015593088298
@@ -1740,10 +1814,6 @@ MonoBehaviour:
   jumpKey: 32
   slideKey: 99
   useButton: 102
-  rightSideUpperLimit: 35
-  rightSideDownLimit: 330
-  leftSideUpperLimit: 155
-  leftSideDownLimit: 210
   headUpperLimit: 25
   headDownLimit: 345
   movementSpeed: 2.5
@@ -1751,9 +1821,6 @@ MonoBehaviour:
   playerSlide: {fileID: 8300000, guid: b814d4f5c146ebe4997fe63572834887, type: 3}
   slideSource: {fileID: 7033070015593088277}
   footAudioSource: {fileID: 8736955026466761548}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
   extraHight: 0.61
   slideForce: 1400
   levelManager: {fileID: 0}
@@ -1769,7 +1836,7 @@ MonoBehaviour:
   canSlide: 1
 --- !u!95 &7033070015593088302
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1783,10 +1850,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7033070015593088297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,9 +1881,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015593088319}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1, y: 2.2200942, z: 0.83766025}
   m_Center: {x: 4.9063007e-17, y: -0.021330357, z: 0.034702495}
 --- !u!54 &7033070015593088295
@@ -1824,10 +1901,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015593088319}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1844,6 +1932,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b814d4f5c146ebe4997fe63572834887, type: 3}
+  m_Resource: {fileID: 8300000, guid: b814d4f5c146ebe4997fe63572834887, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -1929,6 +2018,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &789905320404520021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7033070015593088319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7033070015665421783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,13 +2063,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015665421783}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.044, y: 0.0010004044, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015680745742}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7033070015680745741
 GameObject:
@@ -1986,6 +2097,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015680745741}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0000002384186, y: 0, z: -2.842171e-14}
   m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
@@ -1997,7 +2109,6 @@ Transform:
   - {fileID: 7033070015665421800}
   - {fileID: 8736955026329930691}
   m_Father: {fileID: 7033070017041944776}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7033070015680745743
 SpriteRenderer:
@@ -2016,6 +2127,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2096,10 +2210,15 @@ MonoBehaviour:
   granadeAnimator: {fileID: 8736955025167978585}
   secondaryHandAnimator: {fileID: 8736955026203371385}
   drinkAnimator: {fileID: 430819381987700782}
+  papInPorgress: 0
+  canCycleWeapons: 1
   isReloading: 0
   isKnifing: 0
   isThrowingGrenade: 0
   canPerformActions: 1
+  weaponEmpty: {fileID: 0}
+  debugger: {fileID: 0}
+  player: {fileID: 0}
 --- !u!82 &7033070015680745739
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2111,6 +2230,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
@@ -2220,13 +2340,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015836805273}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.058999777, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070017041944776}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7033070015836805275
 SpriteRenderer:
@@ -2245,6 +2365,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2304,6 +2427,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070015849187767}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6830001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2312,7 +2436,6 @@ Transform:
   - {fileID: 7033070016247316107}
   - {fileID: 7033070016466384847}
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &7033070015849187639
 AudioSource:
@@ -2325,6 +2448,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
@@ -2434,13 +2558,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070016247316105}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: -0.0729, z: -0.0443}
   m_LocalScale: {x: 1.1497741, y: 1.0783, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015849187784}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7033070016247316106
 SpriteRenderer:
@@ -2459,6 +2583,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2519,13 +2646,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070016331207889}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070016908944937}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7033070016331207891
 SpriteRenderer:
@@ -2544,6 +2671,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2581,7 +2711,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7033070016331207892
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2595,10 +2725,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7033070016393040666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2754,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070016393040666}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2629,7 +2762,6 @@ Transform:
   m_Children:
   - {fileID: 7033070016595674785}
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7033070016466384846
 GameObject:
@@ -2655,13 +2787,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070016466384846}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.042999744, z: 0.08800007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015849187784}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7033070016466384832
 SpriteRenderer:
@@ -2680,6 +2812,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2739,13 +2874,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070016595674784}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.4435, z: 0.083}
   m_LocalScale: {x: 1, y: 1.7273, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070016393040667}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7033070016595674786
 SpriteRenderer:
@@ -2764,6 +2899,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2822,6 +2960,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070016908944936}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.5399995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2829,7 +2968,6 @@ Transform:
   m_Children:
   - {fileID: 7033070016331207890}
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7033070017041944759
 GameObject:
@@ -2854,6 +2992,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7033070017041944759}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.0000000018626451, y: 0.1960001, z: 0.016999962}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2866,7 +3005,6 @@ Transform:
   - {fileID: 8736955024812449510}
   - {fileID: 8736955026203371387}
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955024812449511
 GameObject:
@@ -2891,6 +3029,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024812449511}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.04, y: 0.059, z: -0.032}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2919,7 +3058,6 @@ Transform:
   - {fileID: 430819383066047779}
   - {fileID: 430819383618373575}
   m_Father: {fileID: 7033070017041944776}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955024818416758
 GameObject:
@@ -2946,6 +3084,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024818416758}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7600474, y: 0.029003754, z: -0.023999754}
   m_LocalScale: {x: 0.10000008, y: 0.1, z: 0.10000008}
@@ -2953,7 +3092,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025226294351}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955024818416757
 SpriteRenderer:
@@ -2972,6 +3110,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3025,16 +3166,19 @@ MonoBehaviour:
   reserveAmmo: 80
   damage: 75
   coolDownShoot: 0.22
-  shootSound: {fileID: 8300000, guid: 7a659ab38c89dc24d8577e0b44a699e2, type: 3}
-  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   hudImage: {fileID: 4142170040627882291, guid: 2f2132e8aaa7d6542a392a7d576b8e9f, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 7a659ab38c89dc24d8577e0b44a699e2, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955024894235075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,13 +3202,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024894235075}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.8941019, y: 0.23800005, z: 0.00988722}
   m_LocalScale: {x: 0.6000001, y: 1.00405, z: 0.80000025}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955025530930296}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &8736955024913020929
 GameObject:
@@ -3091,6 +3235,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024913020929}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7569651, y: 0.012989774, z: -0.15463406}
   m_LocalScale: {x: 0.12194524, y: 0.1365051, z: 0.10000015}
@@ -3098,7 +3243,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025121671480}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955024913021055
 SpriteRenderer:
@@ -3117,6 +3261,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3170,16 +3317,19 @@ MonoBehaviour:
   reserveAmmo: 50
   damage: 50
   coolDownShoot: 0.135
-  shootSound: {fileID: 8300000, guid: f9ce2d1e1bf436c4c88a5fd4ecd33f46, type: 3}
-  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   hudImage: {fileID: 3954831373851354883, guid: b1384f387b947fa4f9d7e6c81c3d6c71, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f9ce2d1e1bf436c4c88a5fd4ecd33f46, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 450c82156c695f5428c9ce0ed268331d, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955024928637783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,13 +3353,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024928637783}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.99, y: 0.74, z: 0.21999834}
   m_LocalScale: {x: 1.101185, y: 1.0476894, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026730066454}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955024966635137
 GameObject:
@@ -3234,13 +3384,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024966635137}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955024986033890
 GameObject:
@@ -3265,13 +3415,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024986033890}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.03, y: 0.668, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955025694071816}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955024996621102
 GameObject:
@@ -3296,13 +3446,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955024996621102}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.422, y: 0.437, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026870777389}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025067812886
 GameObject:
@@ -3329,6 +3479,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025067812886}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.71500343, y: -0.0540037, z: 0.006999906}
   m_LocalScale: {x: 0.14999998, y: 0.15, z: 0.14999998}
@@ -3336,7 +3487,6 @@ Transform:
   m_Children:
   - {fileID: 8736955026140541389}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025067812885
 SpriteRenderer:
@@ -3355,6 +3505,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3408,16 +3561,19 @@ MonoBehaviour:
   reserveAmmo: 240
   damage: 100
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 0d6837556c8e305419c270957b9de4b7, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 2570021072054278845, guid: ce733f20d6051af47af25b11369ce42c, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 0d6837556c8e305419c270957b9de4b7, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955025121671481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3441,13 +3597,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025121671481}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3, y: 0.85, z: 0.32999986}
   m_LocalScale: {x: 1.2300601, y: 1.0988599, z: 1.4999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955024913020928}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025155210814
 GameObject:
@@ -3474,6 +3630,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025155210814}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.004965476, w: 0.99998766}
   m_LocalPosition: {x: 0.80496925, y: -0.013995513, z: 0.018000063}
   m_LocalScale: {x: 0.13541262, y: 0.13109986, z: 1}
@@ -3481,7 +3638,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025696552197}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.569}
 --- !u!212 &8736955025155210811
 SpriteRenderer:
@@ -3500,6 +3656,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3553,16 +3712,19 @@ MonoBehaviour:
   reserveAmmo: 350
   damage: 200
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 4e77d9a9d772ab549a57a6537358b792, type: 3}
-  reloadSound: {fileID: 8300000, guid: bc543e7a0b655ed4a8ab080c98bb478c, type: 3}
   hudImage: {fileID: 5974131684763320966, guid: 68016c99eb76b1d4ca49df17d31faf0c, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 4e77d9a9d772ab549a57a6537358b792, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: bc543e7a0b655ed4a8ab080c98bb478c, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955025167978588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3588,17 +3750,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025167978588}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.359, y: 0.099, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070017041944776}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8736955025167978585
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3612,10 +3774,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8736955025167978586
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3633,6 +3797,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3691,13 +3858,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025226294352}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.88, y: 1.18, z: 0.17999886}
   m_LocalScale: {x: 1.4999998, y: 1.5, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955024818416756}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025407829539
 GameObject:
@@ -3722,13 +3889,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025407829539}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.99, y: 0.8, z: 0.35333312}
   m_LocalScale: {x: 1.0531524, y: 1.0418031, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026947762589}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025420414360
 GameObject:
@@ -3755,6 +3922,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025420414360}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.1608958, y: 0.049000755, z: -0.049999777}
   m_LocalScale: {x: 0.2897251, y: 0.275275, z: 0.20000023}
@@ -3762,7 +3930,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025745230885}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025420414358
 SpriteRenderer:
@@ -3781,6 +3948,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3834,16 +4004,19 @@ MonoBehaviour:
   reserveAmmo: 50
   damage: 500
   coolDownShoot: 1.3
-  shootSound: {fileID: 8300000, guid: e4bcf1bf2852d684d92df5ef55f374cf, type: 3}
-  reloadSound: {fileID: 8300000, guid: 4c0d3aaca544cd041bef761dbae98b46, type: 3}
   hudImage: {fileID: 4198830201271499212, guid: 46018d9662b9214449cd228826579ee0, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: e4bcf1bf2852d684d92df5ef55f374cf, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 4c0d3aaca544cd041bef761dbae98b46, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955025436100845
 GameObject:
   m_ObjectHideFlags: 0
@@ -3869,6 +4042,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025436100845}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.709968, y: 0.03600003, z: 0.018000122}
   m_LocalScale: {x: 0.1828738, y: 0.16263823, z: 1}
@@ -3876,7 +4050,6 @@ Transform:
   m_Children:
   - {fileID: 8736955026564965398}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025436100843
 SpriteRenderer:
@@ -3895,6 +4068,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3948,16 +4124,19 @@ MonoBehaviour:
   reserveAmmo: 350
   damage: 150
   coolDownShoot: 0.135
-  shootSound: {fileID: 8300000, guid: 42b7ebde9330dbe4bae234638542d88b, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 6775874654201558322, guid: 5cc693d3fb3dc58439d4e2e7accad975, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 42b7ebde9330dbe4bae234638542d88b, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955025530930298
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,6 +4162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025530930298}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.21799833, y: -0.011004195, z: -0.11663541}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.29999995}
@@ -3991,7 +4171,6 @@ Transform:
   - {fileID: 8736955026122640585}
   - {fileID: 8736955024894235074}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025530930297
 SpriteRenderer:
@@ -4010,6 +4189,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4063,16 +4245,19 @@ MonoBehaviour:
   reserveAmmo: 20
   damage: 200
   coolDownShoot: 1
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
   hudImage: {fileID: 2619958238482217058, guid: 9d5eebdcc290c1b428183c5268553778, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 0}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 0}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955025694071817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,6 +4283,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025694071817}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7200083, y: -0.04300247, z: 0.018000063}
   m_LocalScale: {x: 0.23404196, y: 0.27079982, z: 1}
@@ -4105,7 +4291,6 @@ Transform:
   m_Children:
   - {fileID: 8736955024986033889}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025694071814
 SpriteRenderer:
@@ -4124,6 +4309,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4177,16 +4365,19 @@ MonoBehaviour:
   reserveAmmo: 350
   damage: 130
   coolDownShoot: 0.065
-  shootSound: {fileID: 8300000, guid: 301228e2f58d7d54d9ff79bc4db4e6c9, type: 3}
-  reloadSound: {fileID: 8300000, guid: 411433f259a1894478a7213d6a90b583, type: 3}
   hudImage: {fileID: 2021395626525189400, guid: 48f276b37d4def44186ea9bca5094589, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 301228e2f58d7d54d9ff79bc4db4e6c9, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 411433f259a1894478a7213d6a90b583, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955025696552198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,13 +4401,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025696552198}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.572, y: 0.873, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955025155210813}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025745230886
 GameObject:
@@ -4241,13 +4432,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025745230886}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.18, y: 0.24, z: -0.03500103}
   m_LocalScale: {x: 0.5999999, y: 0.6, z: 0.7499998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955025420414359}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025809362556
 GameObject:
@@ -4272,13 +4463,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025809362556}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.359, y: 0.367, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026803269702}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955025963332390
 GameObject:
@@ -4304,13 +4495,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025963332390}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.19999982, y: -1.0350001, z: 0.1259995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 430819383645710003}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025963332388
 SpriteRenderer:
@@ -4329,6 +4520,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4388,13 +4582,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955025968007495}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.00014106394, y: 0, z: -0.0001641115}
   m_LocalScale: {x: 1.3333331, y: 1, z: 0.74999976}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026122640585}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955025968007494
 SpriteRenderer:
@@ -4413,6 +4607,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4473,17 +4670,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026094146224}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.526, y: 0.103, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070017041944776}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8736955026094146221
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4497,10 +4694,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8736955026094146222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4518,6 +4717,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4576,6 +4778,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026122640586}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.8941002, y: 0.23800005, z: 0.00988722}
   m_LocalScale: {x: 0.8, y: 1.00405, z: 0.6}
@@ -4583,7 +4786,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025968007493}
   m_Father: {fileID: 8736955025530930296}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &8736955026140541390
 GameObject:
@@ -4608,13 +4810,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026140541390}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.877, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955025067812884}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026203371388
 GameObject:
@@ -4641,17 +4843,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026203371388}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.26, y: -0.105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070017041944776}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8736955026203371385
 Animator:
-  serializedVersion: 4
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4665,10 +4867,12 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &8736955026203371386
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4686,6 +4890,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4744,13 +4951,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026203417309}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.39, y: 0.52, z: -0.3600001}
   m_LocalScale: {x: 0.85506845, y: 0.7908666, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026506236605}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026329930692
 GameObject:
@@ -4775,13 +4982,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026329930692}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.627, y: 0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015680745742}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026362125623
 GameObject:
@@ -4808,6 +5015,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026362125623}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.8509707, y: -0.027003512, z: 0}
   m_LocalScale: {x: 0.12872769, y: 0.1647441, z: 1}
@@ -4815,7 +5023,6 @@ Transform:
   m_Children:
   - {fileID: 8736955026378057938}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026362125620
 SpriteRenderer:
@@ -4834,6 +5041,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4887,16 +5097,19 @@ MonoBehaviour:
   reserveAmmo: 240
   damage: 120
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 2d4e2a5ce70e04644a408239152667f9, type: 3}
-  reloadSound: {fileID: 8300000, guid: 31eaf460f06ef83499dd561cd5b9c78e, type: 3}
   hudImage: {fileID: 2470049097529655258, guid: a39d44db693310740bbd7016c5810d36, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2d4e2a5ce70e04644a408239152667f9, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 31eaf460f06ef83499dd561cd5b9c78e, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026378057939
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,13 +5133,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026378057939}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.864, y: 0.578, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026362125622}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026399109427
 GameObject:
@@ -4953,6 +5166,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026399109427}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.93900245, y: -0.022006378, z: -0.16463578}
   m_LocalScale: {x: 0.20000018, y: 0.2, z: 0.20000018}
@@ -4960,7 +5174,6 @@ Transform:
   m_Children:
   - {fileID: 8736955026849948354}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026399109426
 SpriteRenderer:
@@ -4979,6 +5192,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5032,16 +5248,19 @@ MonoBehaviour:
   reserveAmmo: 32
   damage: 300
   coolDownShoot: 0.3
-  shootSound: {fileID: 8300000, guid: 16a116a189c76df438705321ccb4a979, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 2780116335317116364, guid: 01386ac22bc6a354d902e07209423f74, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 16a116a189c76df438705321ccb4a979, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026466761550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5066,13 +5285,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026466761550}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.1304, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7033070015593088304}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &8736955026466761548
 AudioSource:
@@ -5085,6 +5304,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.02
   m_Pitch: 1
@@ -5195,6 +5415,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026506236607}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.97598976, y: -0.050998077, z: -0.08563572}
   m_LocalScale: {x: 0.17542434, y: 0.18966539, z: 0.1000001}
@@ -5202,7 +5423,6 @@ Transform:
   m_Children:
   - {fileID: 8736955026203417308}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026506236606
 SpriteRenderer:
@@ -5221,6 +5441,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5274,16 +5497,19 @@ MonoBehaviour:
   reserveAmmo: 25
   damage: 300
   coolDownShoot: 0.7
-  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 3221004147039794589, guid: 39ca8902946bd12488b536b7e78e4948, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026564965399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5307,13 +5533,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026564965399}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.02, y: 0.499, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955025436100844}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026619192698
 GameObject:
@@ -5338,13 +5564,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026619192698}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.07, y: 0.72, z: 0.049998756}
   m_LocalScale: {x: 1.1322463, y: 1.0419095, z: 1.4999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026724361782}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026724361784
 GameObject:
@@ -5371,6 +5597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026724361784}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.83099216, y: 0.09299326, z: -0.15863566}
   m_LocalScale: {x: 0.13248004, y: 0.14396645, z: 0.10000005}
@@ -5378,7 +5605,6 @@ Transform:
   m_Children:
   - {fileID: 8736955026619192697}
   m_Father: {fileID: 7033070015680745742}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026724361783
 SpriteRenderer:
@@ -5397,6 +5623,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5450,16 +5679,19 @@ MonoBehaviour:
   reserveAmmo: 35
   damage: 100
   coolDownShoot: 0.3
-  shootSound: {fileID: 8300000, guid: a28f4fedcf47566489817a824234b244, type: 3}
-  reloadSound: {fileID: 8300000, guid: ae6e8d9cf19ade84eb42624b906ee852, type: 3}
   hudImage: {fileID: 3106127821891291851, guid: d9435dba6abaaa1458887b799eb6f85e, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: a28f4fedcf47566489817a824234b244, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: ae6e8d9cf19ade84eb42624b906ee852, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026730066456
 GameObject:
   m_ObjectHideFlags: 0
@@ -5485,6 +5717,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026730066456}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.8299746, y: -0.016115889, z: -0.01499993}
   m_LocalScale: {x: 0.13621686, y: 0.16075376, z: 0.10000016}
@@ -5492,7 +5725,6 @@ Transform:
   m_Children:
   - {fileID: 8736955024928637782}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026730066455
 SpriteRenderer:
@@ -5511,6 +5743,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5564,16 +5799,19 @@ MonoBehaviour:
   reserveAmmo: 50
   damage: 200
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 8322497921569474728, guid: 1c0744efb336aa64380e62719569172a, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 5459265dece968c4e94efc9145d2c398, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026803269703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5599,6 +5837,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026803269703}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.9100508, y: -0.093012795, z: 0}
   m_LocalScale: {x: 0.36886975, y: 0.42302525, z: 1}
@@ -5606,7 +5845,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025809362555}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026803269700
 SpriteRenderer:
@@ -5625,6 +5863,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5678,16 +5919,19 @@ MonoBehaviour:
   reserveAmmo: 240
   damage: 120
   coolDownShoot: 0.5
-  shootSound: {fileID: 8300000, guid: 973f4fd1f3da36248b3a6c9042836940, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 2707930545056848809, guid: 52f91e2ccc66fd142aa8437e9f6b6625, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 973f4fd1f3da36248b3a6c9042836940, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026849948355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5711,13 +5955,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026849948355}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.02, y: 0.41, z: 0.21499985}
   m_LocalScale: {x: 0.74999976, y: 0.75, z: 0.7499998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8736955026399109425}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8736955026870777390
 GameObject:
@@ -5744,6 +5988,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026870777390}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5710519, y: -0.04101084, z: 0.0009998642}
   m_LocalScale: {x: 0.25009677, y: 0.23907398, z: 1}
@@ -5751,7 +5996,6 @@ Transform:
   m_Children:
   - {fileID: 8736955024996621101}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026870777387
 SpriteRenderer:
@@ -5770,6 +6014,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5823,16 +6070,19 @@ MonoBehaviour:
   reserveAmmo: 300
   damage: 100
   coolDownShoot: 0.07
-  shootSound: {fileID: 8300000, guid: f01a74e2166003a45ac1ba33c4ad5c52, type: 3}
-  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   hudImage: {fileID: 6194763392873861736, guid: b7b1ff160939e10439761fc676161325, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f01a74e2166003a45ac1ba33c4ad5c52, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 92d58228c6112d943afa67d46c2426e5, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}
 --- !u!1 &8736955026947762590
 GameObject:
   m_ObjectHideFlags: 0
@@ -5858,6 +6108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8736955026947762590}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7280039, y: -0.0050080866, z: -0.17463553}
   m_LocalScale: {x: 0.14242955, y: 0.11698613, z: 0.14999999}
@@ -5865,7 +6116,6 @@ Transform:
   m_Children:
   - {fileID: 8736955025407829538}
   m_Father: {fileID: 8736955024812449510}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8736955026947762588
 SpriteRenderer:
@@ -5884,6 +6134,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5937,13 +6190,16 @@ MonoBehaviour:
   reserveAmmo: 300
   damage: 150
   coolDownShoot: 0.1
-  shootSound: {fileID: 8300000, guid: 2037dcc95481ee24e932b8d5fee492e7, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   hudImage: {fileID: 6401716909993816879, guid: ee9e1ca4594c057429a87554a2019301, type: 3}
   specialBullet: {fileID: 0}
-  packapunchedWeapon: {fileID: 0}
+  papSprite: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 2037dcc95481ee24e932b8d5fee492e7, type: 3}
+  shootSoundUpgrade: {fileID: 0}
+  reloadSound: {fileID: 8300000, guid: 1e54522e9d6d6884c90dcd8364203fd8, type: 3}
   totalBulletsPerShot: 5
   bulletSpawnSpeed: 0.1
   bulletsToSpawn: 5
   maxClipAmmo: 0
   maxReserveAmmo: 0
+  isWeaponUpgraded: 0
+  weaponSprite: {fileID: 0}

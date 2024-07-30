@@ -1,48 +1,48 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnPlayers : MonoBehaviourPunCallbacks
 {
     [Header("References")]
-    public GameObject[] players;
-    public GameObject[] playerSpawnPoints;
+    public GameObject[] soloPlayers;
+    public GameObject[] playerPrefabs;      // Array of player prefabs
+    public GameObject[] playerSpawnPoints;  // Array of spawn points
 
-    private void Start()
+    [SerializeField] private CameraScript cameraScript;
+
+    private void OnEnable()
     {
-        SpawnAllPlayers();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void SpawnAllPlayers()
+    private void OnDisable()
     {
-        int playerCount = PhotonNetwork.PlayerList.Length;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-        for (int i = 0; i < playerCount; i++)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(StaticVariables.isSoloGame)
         {
-            // Calculate spawn position for each player
-            Vector3 spawnPosition = playerSpawnPoints[i % playerSpawnPoints.Length].transform.position;
-
-            // Determine if this is the local player's spawn
-            if (PhotonNetwork.LocalPlayer.IsMasterClient)
-            {
-                // Spawn the local player's player object at index 0
-                GameObject playerObject = PhotonNetwork.Instantiate("Photon/"+players[i].name, spawnPosition, Quaternion.identity);
-                playerObject.transform.SetParent(transform);
-                playerObject.transform.SetSiblingIndex(0);
-            }
-            else
-            {
-                // Spawn for other players with appropriate indexing
-                GameObject playerObject = PhotonNetwork.Instantiate("Photon/" + players[i].name, spawnPosition, Quaternion.identity);
-                playerObject.transform.SetParent(transform);
-                playerObject.transform.SetSiblingIndex(i + 1); // Set index based on player number
-            }
+            Instantiate(soloPlayers[StaticVariables.selectedCharacterIndex], playerSpawnPoints[0].transform.position, Quaternion.Euler(0, 90, 0), transform);
+            return;
+        }
+        
+        if (scene.buildIndex == 1 && PhotonNetwork.InRoom)
+        {
+            // Ensure players are spawned when the scene loads
+            SpawnPlayer();
         }
     }
 
-    public override void OnJoinedRoom()
+    private void SpawnPlayer()
     {
-        base.OnJoinedRoom();
-        SpawnAllPlayers();
+        int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        Vector3 spawnPosition = playerSpawnPoints[playerIndex % playerSpawnPoints.Length].transform.position;
+        GameObject playerPrefab = playerPrefabs[playerIndex % playerPrefabs.Length];
+        PhotonNetwork.Instantiate("Photon/" + playerPrefab.name, spawnPosition, Quaternion.Euler(0, 90, 0));
     }
 }
