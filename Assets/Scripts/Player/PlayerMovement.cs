@@ -144,7 +144,10 @@ public class PlayerMovement : MonoBehaviour
 
                 playerRigidbody.AddForce(transform.forward * slideForce, ForceMode.Acceleration);
 
-                networkedVariables.SetSlidingState(true); // Notify network
+                if (!StaticVariables.isSoloGame)
+                {
+                    networkedVariables.SetSlidingState(true); // Notify network
+                }
             }
         }
     }
@@ -160,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
             Color color = spriteRenderer.color;
             if (spriteRenderer != slidingSprite)
             {
-                
+
                 color.a = state ? 255f : 0;
             }
             else

@@ -9,9 +9,11 @@ public class PlayerSpriteReset : StateMachineBehaviour
         animator.SetBool("Slide", false);
         movement.SetPlayerSlideVariables(true);
 
-        NetworkedVariables networkedVariables = animator.transform.GetComponentInParent<NetworkedVariables>();
-        networkedVariables.SetSlidingState(false);
-
+        if (!StaticVariables.isSoloGame)
+        {
+            NetworkedVariables networkedVariables = animator.transform.GetComponentInParent<NetworkedVariables>();
+            networkedVariables.SetSlidingState(false);
+        }
         Debug.Log("Slide animation ended. Resetting sprites.");
     }
 }

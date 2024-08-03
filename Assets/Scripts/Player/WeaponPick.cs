@@ -97,7 +97,7 @@ public class WeaponPick : MonoBehaviour
 
         references.playerActions.primaryHand.SetActive(true);
         references.playerActions.secondaryHand.SetActive(true);
-        references.playerActions.papInPorgress = false;
+        references.playerActions.papInProgress = false;
 
         papedWeapon.GetComponent<SpriteRenderer>().sprite = script.papSprite;
         papedWeapon.SetActive(true);

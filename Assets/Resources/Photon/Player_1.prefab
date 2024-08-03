@@ -1499,7 +1499,7 @@ MonoBehaviour:
   granadeAnimator: {fileID: 4390076018255775558}
   secondaryHandAnimator: {fileID: 4390076020160526186}
   drinkAnimator: {fileID: 0}
-  papInPorgress: 0
+  papInProgress: 0
   canCycleWeapons: 1
   isReloading: 0
   isKnifing: 0

@@ -613,29 +613,29 @@ MonoBehaviour:
   launcherBullet: {fileID: 5639912361060528120, guid: fcdad741dcc50fd459f30f790266ca6c, type: 3}
   wonderWeaponBullet: {fileID: 0}
   firingEffect: {fileID: 3419061274479534805, guid: 3350f505eec90f441bb7eaa166380970, type: 3}
-  granadePrefab: {fileID: 3840780591772264180, guid: 6b6e562de88b2e845ab6f104e5e4b4bd, type: 3}
+  granadePrefab: {fileID: 0}
   grenadeExplosion: {fileID: 159918, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 3}
-  granadesNumber: 4
+  granadesNumber: 0
   shotgunBulletAngleOffset: 15
   timeToDestroyBullet: 2
   bulletSpeed: 50
   bulletLauncherSpawnTimer: 2
   knifeAnimationTimer: 0.6
-  granadeAnimationTimer: 0.4
-  granadeThrowForce: 1
+  granadeAnimationTimer: 0
+  granadeThrowForce: 0
   knifeDamage: 130
   granadesHolder: {fileID: 0}
-  granadeSpawnPoint: {fileID: 8993537598921101113}
+  granadeSpawnPoint: {fileID: 0}
   primaryHand: {fileID: 8993537597367115835}
   secondaryHand: {fileID: 8993537598634150252}
   doubleTap: {fileID: 0}
   knifeHitNothing: {fileID: 8300000, guid: b59640f882c7fac42979ac96150c742e, type: 3}
   grenadeRoll: {fileID: 8300000, guid: ab1d20b3b3ef9074cad3c6ffccac9d79, type: 3}
   knifeAnimator: {fileID: 8993537598467432073}
-  granadeAnimator: {fileID: 8993537597833007922}
+  granadeAnimator: {fileID: 0}
   secondaryHandAnimator: {fileID: 8993537597373276040}
   drinkAnimator: {fileID: 8993537598722894146}
-  papInPorgress: 0
+  papInProgress: 0
   canCycleWeapons: 1
   isReloading: 0
   isKnifing: 0

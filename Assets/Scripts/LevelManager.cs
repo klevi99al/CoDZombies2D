@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> weapons;
     public GameObject[] players;
     public AudioSource source;
+    public InGameChat inGameChat;
     public static List<int> zoneNumbers = new();
 
 

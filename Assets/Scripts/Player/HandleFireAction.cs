@@ -48,7 +48,7 @@ public class HandleFireAction : MonoBehaviour
     public Animator secondaryHandAnimator;
     public Animator drinkAnimator;
 
-    [HideInInspector] public bool papInPorgress = false;
+    [HideInInspector] public bool papInProgress = false;
     [HideInInspector] public bool canCycleWeapons = true;
     [HideInInspector] public bool isReloading = false;
     [HideInInspector] public bool isKnifing;
@@ -106,11 +106,11 @@ public class HandleFireAction : MonoBehaviour
 
     private void SetPlayerControls()
     {
-        fireKey     = PlayerSettingsLoader.Instance.fireKey;
-        reloadKey   = PlayerSettingsLoader.Instance.reloadKey;
-        grenadeKey  = PlayerSettingsLoader.Instance.throwPrimaryKey;
-        nextWeapon  = PlayerSettingsLoader.Instance.nextWeaponKey;
-        knifeKey    = PlayerSettingsLoader.Instance.meleeKey;
+        fireKey = PlayerSettingsLoader.Instance.fireKey;
+        reloadKey = PlayerSettingsLoader.Instance.reloadKey;
+        grenadeKey = PlayerSettingsLoader.Instance.throwPrimaryKey;
+        nextWeapon = PlayerSettingsLoader.Instance.nextWeaponKey;
+        knifeKey = PlayerSettingsLoader.Instance.meleeKey;
     }
 
     private void Update()

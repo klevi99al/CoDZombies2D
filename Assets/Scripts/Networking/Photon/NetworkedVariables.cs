@@ -11,6 +11,8 @@ public class NetworkedVariables : MonoBehaviourPunCallbacks, IPunObservable
     {
         playerSprites = GetComponent<PlayerMovement>().allSprites;
         slidingSprite = GetComponent<PlayerMovement>().slidingSprite;
+
+        PlayerManager.Instance.RegisterPlayer(this);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -58,5 +60,10 @@ public class NetworkedVariables : MonoBehaviourPunCallbacks, IPunObservable
             }
             sprite.color = color;
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerManager.Instance.UnregisterPlayer(this);
     }
 }

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -5,6 +6,12 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float bulletDamage;
     [HideInInspector] public int enemiesTouched = 0;                // if a bullet has already hit an enemy we don't do that same amount of damage to the zombie nearby
     [HideInInspector] public GameObject playerWhoShotTheBullet;     // to keep track of the player kills
+    private PhotonView photonView;
+
+    private void Start()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,8 +43,20 @@ public class Bullet : MonoBehaviour
 
     private void DestroyBullet()
     {
-        Destroy(gameObject);
+        if (PhotonNetwork.IsConnected && photonView != null)
+        {
+            // Only attempt to destroy the object over the network if it has a PhotonView
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     private void OnBecameInvisible()
     {

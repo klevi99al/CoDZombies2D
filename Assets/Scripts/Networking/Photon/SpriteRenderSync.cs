@@ -20,14 +20,14 @@ public class SpriteRendererSync : MonoBehaviour, IPunObservable
         {
             // Send the active state of the SpriteRenderer
             stream.SendNext(spriteRenderer.enabled);
-            Debug.Log("Sending SpriteRenderer state: " + spriteRenderer.enabled);
+            //Debug.Log("Sending SpriteRenderer state: " + spriteRenderer.enabled);
         }
         else
         {
             // Receive the active state of the SpriteRenderer
             bool state = (bool)stream.ReceiveNext();
             spriteRenderer.enabled = state;
-            Debug.Log("Received SpriteRenderer state: " + state);
+            //Debug.Log("Received SpriteRenderer state: " + state);
         }
     }
 }

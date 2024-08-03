@@ -143,7 +143,7 @@ public class Packapunch : MonoBehaviour
                 }
             }
             PlayerReferences references = activator.GetComponent<PlayerReferences>();
-            references.playerActions.papInPorgress = false;
+            references.playerActions.papInProgress = false;
             tempPapWeapon.GetComponent<SpriteRenderer>().sprite = null;
             activeWeapon = null;
             activator = null;
