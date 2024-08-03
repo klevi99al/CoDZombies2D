@@ -16,6 +16,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject lobbyClosedScreen;
     public GameObject connectedPlayerPrefab;
     public GameObject connectedPlayersHolder;
+    public Transform lobbyTextChatContainer;
 
     private readonly string hostClosedLobby = "Disconnected from the lobby. Reason: Host Closed the room!";
     private readonly string hostKickedPlayer = "Disconnected from the lobby. Reason: You were kicked from the room";
@@ -189,6 +190,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void LeaveRoom()
     {
+        for(int i = 0; i < lobbyTextChatContainer.childCount; i++)
+        {
+            Destroy(lobbyTextChatContainer.GetChild(i).gameObject);
+        }
+
         PhotonNetwork.LeaveRoom();
         lobbyClosedScreen.SetActive(true);
         lobbyClosedScreen.GetComponentInChildren<TMP_Text>().text = hostClosedLobby;
