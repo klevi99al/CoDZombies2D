@@ -13,8 +13,12 @@ public class NetworkChat : MonoBehaviour
         time = timeToDisable;
     }
 
-    public void SetMessage(string message)
+    public void SetMessage(string message, bool isLastChat)
     {
+        if(isLastChat)
+        {
+            time = timeToDisable;
+        }
         StopAllCoroutines(); // Stop any existing coroutine
         text.text = message;
         gameObject.SetActive(true);
@@ -23,7 +27,7 @@ public class NetworkChat : MonoBehaviour
 
     private IEnumerator StartTimer()
     {
-        time = timeToDisable; // Reset the timer
+        
         while (time > 0)
         {
             yield return null;

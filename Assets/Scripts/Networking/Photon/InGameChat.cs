@@ -121,14 +121,14 @@ public class InGameChat : MonoBehaviourPun
             {
                 NetworkChat currentChat = currentMessage.GetComponent<NetworkChat>();
                 NetworkChat nextChat = nextMessage.GetComponent<NetworkChat>();
-                currentChat.SetMessage(nextChat.text.text);
+                currentChat.SetMessage(nextChat.text.text, false);
             }
         }
 
         // Set the last message slot with the new message
         Transform lastMessage = messagesTransform.GetChild(messagesTransform.childCount - 1);
         NetworkChat lastChat = lastMessage.GetComponent<NetworkChat>();
-        lastChat.SetMessage(message);
+        lastChat.SetMessage(message, true);
 
         yield return null;
     }
