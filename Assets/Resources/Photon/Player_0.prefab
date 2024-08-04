@@ -4896,7 +4896,7 @@ MonoBehaviour:
   knifeFlashSound: {fileID: 8300000, guid: acd773a11b1592e499d78453cda95937, type: 3}
   playerActions: {fileID: 4036081982766169749}
   canPlayerInteract: 1
-  playerScore: 100000
+  playerScore: 2000
 --- !u!65 &4036081982878984889
 BoxCollider:
   m_ObjectHideFlags: 0

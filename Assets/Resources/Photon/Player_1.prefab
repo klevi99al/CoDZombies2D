@@ -1111,7 +1111,7 @@ MonoBehaviour:
   knifeFlashSound: {fileID: 8300000, guid: acd773a11b1592e499d78453cda95937, type: 3}
   playerActions: {fileID: 4390076019407396943}
   canPlayerInteract: 1
-  playerScore: 0
+  playerScore: 2000
 --- !u!65 &4390076019313701025
 BoxCollider:
   m_ObjectHideFlags: 0

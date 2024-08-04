@@ -47,6 +47,11 @@ MonoBehaviour:
   - UpdateSlideState
   - WeaponFireNetworked
   - ReceiveMessage
+  - SetParent
+  - SetZombieParent
+  - KillZombie
+  - KillZombieOverNetwork
+  - RPC_DoRoundTransition
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

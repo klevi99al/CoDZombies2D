@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +47,7 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
     private bool hasSpawnedPowerup = false;
     private readonly float knifeDamageCooldown = 0.7f;
     private List<GameObject> powerups;
+    private PhotonView photonView;
     [HideInInspector] public enum KILL_TYPE { BULLETKILL, KNIFEKILL, EXPLOSIVEKILL, WONDERWEAPONKILL, OTHER }
     [HideInInspector] public KILL_TYPE mod;
 
@@ -65,6 +67,8 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
         StartCoroutine(PlayZombieMouthSounds());
         StartCoroutine(PlayZombieFootstepSounds());
         powerups = levelManager.powerupsHolder.GetComponent<Powerups>().powerupList;
+
+        photonView = GetComponent<PhotonView>();
     }
 
     private float CalculateZombieHealth()
@@ -189,7 +193,7 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
                 zombieKillCounted = true;
                 StaticVariables.zombiesKilledThisRound++;
             }
-            
+
             Debug.Log(StaticVariables.zombiesKilledThisRound + " space " + LevelManager.TotalZombiePerRound());
             if (StaticVariables.zombiesKilledThisRound >= LevelManager.TotalZombiePerRound())
             {
@@ -198,8 +202,15 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
                 // at the same frame, i still dont know what was causing that, probably something to keep in mind and fix it the right way later on
                 if (!StaticVariables.levelInBetweenRounds)
                 {
-                    HUD.Instance.DoRoundTransition();
-                    levelManager.MakeRoundSwitchAudio();
+                    if (StaticVariables.isSoloGame)
+                    {
+                        HUD.Instance.DoRoundTransition();
+                        levelManager.MakeRoundSwitchAudio();
+                    }
+                    else
+                    {
+                        photonView.RPC(nameof(RPC_DoRoundTransition), RpcTarget.All);
+                    }
                 }
             }
 
@@ -211,10 +222,10 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
                 // instead of a switch, used expression lol
                 var amount = MOD switch
                 {
-                    KILL_TYPE.BULLETKILL        =>     StaticVariables.normalKillPoints,
-                    KILL_TYPE.KNIFEKILL         =>     StaticVariables.knifeKillPoints,
-                    KILL_TYPE.EXPLOSIVEKILL     =>     StaticVariables.granadeKillPoints,
-                    KILL_TYPE.WONDERWEAPONKILL  =>     StaticVariables.wonderWeaponPoints,
+                    KILL_TYPE.BULLETKILL => StaticVariables.normalKillPoints,
+                    KILL_TYPE.KNIFEKILL => StaticVariables.knifeKillPoints,
+                    KILL_TYPE.EXPLOSIVEKILL => StaticVariables.granadeKillPoints,
+                    KILL_TYPE.WONDERWEAPONKILL => StaticVariables.wonderWeaponPoints,
                     KILL_TYPE.OTHER => 0,
                     _ => 0,
                 };
@@ -243,22 +254,29 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
         }
     }
 
+    [PunRPC]
+    public void RPC_DoRoundTransition()
+    {
+        HUD.Instance.DoRoundTransition();
+        levelManager.MakeRoundSwitchAudio(); // Ensure LevelManager is also properly synchronized
+    }
+
     private void WatchForPowerupDrop()
     {
         int magicNumber = Random.Range(1, 100);
-        
+
         if (magicNumber <= StaticVariables.powerupDropPercentage)
         {
             StaticVariables.canPowerupsDrop = false;
             hasSpawnedPowerup = true;
-            int powerupIndex =  GetRandomPowerup(Random.Range(0, powerups.Count));
+            int powerupIndex = GetRandomPowerup(Random.Range(0, powerups.Count));
             Vector3 position = transform.position + new Vector3(0, 1, 0);
             GameObject powerup = powerups[powerupIndex];
-            
+
             Powerups powerupsScript = levelManager.powerupsHolder.GetComponent<Powerups>();
             powerupsScript.EnablePowerupDrops();
             powerupsScript.SpawnPowerup(powerup, position);
-            
+
             StaticVariables.totalPowerupsSpawnedThisRound++;
         }
     }
@@ -266,10 +284,10 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
     private int GetRandomPowerup(int index)
     {
         GameObject powerup = powerups[index];
-        switch(powerup.name.ToLower())
+        switch (powerup.name.ToLower())
         {
             case "nuke":
-                if(StaticVariables.totalNukesSpawned >= 3)
+                if (StaticVariables.totalNukesSpawned >= 3)
                 {
                     index = GetNextIndex(index);
                     return GetRandomPowerup(index);
@@ -342,6 +360,12 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
 
     public void KillZombie()
     {
+        photonView.RPC(nameof(KillZombieOverNetwork), RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void KillZombieOverNetwork()
+    {
         Vector3 position = transform.position + new Vector3(0, 1.8f, 0);
         int index = Random.Range(0, zombieDeathSounds.Count);
 
@@ -350,7 +374,17 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
         GameObject deathAudio = Instantiate(deathAudioPrefab, transform.position, Quaternion.identity);
         deathAudio.GetComponent<AudioSource>().PlayOneShot(zombieDeathSounds[index]);
         Destroy(deathAudio, 3f);
-        Destroy(transform.parent.gameObject);
+        if (StaticVariables.isSoloGame)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+        else
+        {
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(transform.parent.gameObject);
+            }
+        }
         GameObject deathBlood = Instantiate(deathBloodSplatter, position, Quaternion.identity);
         Destroy(deathBlood, 0.2f);
     }
@@ -488,51 +522,65 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
             if (zombieIsMoving)
             {
                 List<AudioClip> type = new();
-                if (zombieScript.isSprinter == true)
+                if (zombieScript.isSprinter)
                 {
-                    if (lastLayerTouched == 7) // grass
+                    switch (lastLayerTouched)
                     {
-                        type = audioScript.grassRun;
-                    }
-                    else if (lastLayerTouched == 8) // mud
-                    {
-                        type = audioScript.mudWalk;
-                    }
-                    else if (lastLayerTouched == 10) // mud
-                    {
-                        type = audioScript.woodRun;
-                    }
-                    else if (lastLayerTouched == 11) // mud
-                    {
-                        type = audioScript.concreteRun;
+                        case 7: // grass
+                            type = audioScript.grassRun;
+                            break;
+                        case 8: // mud
+                            type = audioScript.mudWalk;
+                            break;
+                        case 10: // wood
+                            type = audioScript.woodRun;
+                            break;
+                        case 11: // concrete
+                            type = audioScript.concreteRun;
+                            break;
                     }
                 }
                 else
                 {
-                    if (lastLayerTouched == 7) // grass
+                    switch (lastLayerTouched)
                     {
-                        type = audioScript.grassWalk;
-                    }
-                    else if (lastLayerTouched == 8) // mud
-                    {
-                        type = audioScript.mudWalk;
-                    }
-                    else if (lastLayerTouched == 10) // wood
-                    {
-                        type = audioScript.woodWalk;
-                    }
-                    else if (lastLayerTouched == 11) // concrete
-                    {
-                        type = audioScript.concreteWalk;
+                        case 7: // grass
+                            type = audioScript.grassWalk;
+                            break;
+                        case 8: // mud
+                            type = audioScript.mudWalk;
+                            break;
+                        case 10: // wood
+                            type = audioScript.woodWalk;
+                            break;
+                        case 11: // concrete
+                            type = audioScript.concreteWalk;
+                            break;
                     }
                 }
-                yield return new WaitForSeconds(inBetweenNextStepFootRun);
-                int index = 0;
-                audioSource.PlayOneShot(type[index]);
+
+                if (type.Count > 0)
+                {
+                    yield return new WaitForSeconds(inBetweenNextStepFootRun);
+                    int index = Random.Range(0, type.Count); // Randomly select an index within bounds
+                    if (audioSource != null)
+                    {
+                        audioSource.PlayOneShot(type[index]);
+                    }
+                    else
+                    {
+                        Debug.LogError("AudioSource is null.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("No audio clips found for the current type.");
+                }
             }
             yield return null;
         }
     }
+
 
     private IEnumerator ReActivateZombieSounds(float soundTime)
     {

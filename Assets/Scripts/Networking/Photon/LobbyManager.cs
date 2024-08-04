@@ -183,6 +183,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void InformPlayersToLeave()
     {
+        ClearChat();
         GetComponent<PhotonView>().RPC(nameof(LeaveRoom), RpcTarget.Others);
         PhotonNetwork.LeaveRoom(); // The host also leaves the room
     }
@@ -190,15 +191,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void LeaveRoom()
     {
-        for(int i = 0; i < lobbyTextChatContainer.childCount; i++)
-        {
-            Destroy(lobbyTextChatContainer.GetChild(i).gameObject);
-        }
-
+        ClearChat();
         PhotonNetwork.LeaveRoom();
         lobbyClosedScreen.SetActive(true);
         lobbyClosedScreen.GetComponentInChildren<TMP_Text>().text = hostClosedLobby;
         Debug.Log("Player has been asked to leave the room.");
+    }
+
+    private void ClearChat()
+    {
+        for (int i = 0; i < lobbyTextChatContainer.childCount; i++)
+        {
+            Destroy(lobbyTextChatContainer.GetChild(i).gameObject);
+        }
     }
 
     public override void OnConnectedToMaster()

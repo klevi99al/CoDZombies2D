@@ -51125,7 +51125,7 @@ MonoBehaviour:
   lobbyClosedScreen: {fileID: 57355896}
   connectedPlayerPrefab: {fileID: 269649741902845414, guid: d7f0dfaf111a8a941b2e3bf773f7c704, type: 3}
   connectedPlayersHolder: {fileID: 878088789}
-  lobbyTextChatContainer: {fileID: 5099995149224625393}
+  lobbyTextChatContainer: {fileID: 938452203}
 --- !u!114 &5099995148859915547
 MonoBehaviour:
   m_ObjectHideFlags: 0
