@@ -360,7 +360,14 @@ public class Zombie_Damage_and_Extras : MonoBehaviour
 
     public void KillZombie()
     {
-        photonView.RPC(nameof(KillZombieOverNetwork), RpcTarget.All);
+        if (StaticVariables.isSoloGame)
+        {
+            KillZombieOverNetwork();
+        }
+        else
+        {
+            photonView.RPC(nameof(KillZombieOverNetwork), RpcTarget.All);
+        }
     }
 
     [PunRPC]

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class Weapon_Script : MonoBehaviour
@@ -29,6 +30,7 @@ public class Weapon_Script : MonoBehaviour
     [HideInInspector] public int maxReserveAmmo;
     [HideInInspector] public bool isWeaponUpgraded = false;
     [HideInInspector] public Sprite weaponSprite;
+
     public enum WEAPON_TYPE
     {
         SINGLE_SHOT,

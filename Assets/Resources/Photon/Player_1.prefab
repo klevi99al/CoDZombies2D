@@ -1112,6 +1112,7 @@ MonoBehaviour:
   playerActions: {fileID: 4390076019407396943}
   canPlayerInteract: 1
   playerScore: 2000
+  weaponsHolder: {fileID: 7005072684886243754}
 --- !u!65 &4390076019313701025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1498,7 +1499,7 @@ MonoBehaviour:
   knifeAnimator: {fileID: 4390076019003350207}
   granadeAnimator: {fileID: 4390076018255775558}
   secondaryHandAnimator: {fileID: 4390076020160526186}
-  drinkAnimator: {fileID: 0}
+  drinkAnimator: {fileID: 7005072685073798188}
   papInProgress: 0
   canCycleWeapons: 1
   isReloading: 0
@@ -2655,13 +2656,14 @@ GameObject:
   - component: {fileID: 7005072684798378190}
   - component: {fileID: 7005072684798378188}
   - component: {fileID: 7005072684798378189}
+  - component: {fileID: 2703142539914105243}
   m_Layer: 0
   m_Name: rpg_weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072684798378190
 Transform:
   m_ObjectHideFlags: 0
@@ -2765,6 +2767,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &2703142539914105243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072684798378191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072684811039330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,13 +2916,14 @@ GameObject:
   - component: {fileID: 7005072684970963413}
   - component: {fileID: 7005072684970963411}
   - component: {fileID: 7005072684970963412}
+  - component: {fileID: 2087910439373313503}
   m_Layer: 0
   m_Name: m4a4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072684970963413
 Transform:
   m_ObjectHideFlags: 0
@@ -3001,6 +3026,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &2087910439373313503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072684970963414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072684988983765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3043,13 +3090,14 @@ GameObject:
   - component: {fileID: 7005072685042164782}
   - component: {fileID: 7005072685042164780}
   - component: {fileID: 7005072685042164781}
+  - component: {fileID: 8083944996922251684}
   m_Layer: 0
   m_Name: glock-17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685042164782
 Transform:
   m_ObjectHideFlags: 0
@@ -3152,6 +3200,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &8083944996922251684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685042164783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685068111886
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,13 +3483,14 @@ GameObject:
   - component: {fileID: 7005072685202794511}
   - component: {fileID: 7005072685202794509}
   - component: {fileID: 7005072685202794510}
+  - component: {fileID: 7846723362120522492}
   m_Layer: 0
   m_Name: galil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685202794511
 Transform:
   m_ObjectHideFlags: 0
@@ -3522,6 +3593,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &7846723362120522492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685202794736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685244023063
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,13 +3688,14 @@ GameObject:
   - component: {fileID: 7005072685315602022}
   - component: {fileID: 7005072685315602020}
   - component: {fileID: 7005072685315602021}
+  - component: {fileID: 3206857503466286235}
   m_Layer: 0
   m_Name: uzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685315602022
 Transform:
   m_ObjectHideFlags: 0
@@ -3704,6 +3798,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &3206857503466286235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685315602023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685327199634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,13 +3831,14 @@ GameObject:
   - component: {fileID: 7005072685327199633}
   - component: {fileID: 7005072685327199663}
   - component: {fileID: 7005072685327199632}
+  - component: {fileID: 8786616923501382256}
   m_Layer: 0
   m_Name: rk5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685327199633
 Transform:
   m_ObjectHideFlags: 0
@@ -3824,6 +3941,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &8786616923501382256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685327199634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685357090347
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,13 +3974,14 @@ GameObject:
   - component: {fileID: 7005072685357090346}
   - component: {fileID: 7005072685357090344}
   - component: {fileID: 7005072685357090345}
+  - component: {fileID: 5506871050937335866}
   m_Layer: 0
   m_Name: asp_pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685357090346
 Transform:
   m_ObjectHideFlags: 0
@@ -3944,6 +4084,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &5506871050937335866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685357090347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685406531619
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,13 +4117,14 @@ GameObject:
   - component: {fileID: 7005072685406531618}
   - component: {fileID: 7005072685406531616}
   - component: {fileID: 7005072685406531617}
+  - component: {fileID: 3564049388047905107}
   m_Layer: 0
   m_Name: m8a1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685406531618
 Transform:
   m_ObjectHideFlags: 0
@@ -4064,6 +4227,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &3564049388047905107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685406531619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685460616662
 GameObject:
   m_ObjectHideFlags: 0
@@ -4075,6 +4260,7 @@ GameObject:
   - component: {fileID: 7005072685460616661}
   - component: {fileID: 7005072685460616659}
   - component: {fileID: 7005072685460616660}
+  - component: {fileID: 7658685486891752933}
   m_Layer: 0
   m_Name: deagle (1)
   m_TagString: Untagged
@@ -4184,6 +4370,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &7658685486891752933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685460616662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685521284584
 GameObject:
   m_ObjectHideFlags: 0
@@ -4257,13 +4465,14 @@ GameObject:
   - component: {fileID: 7005072685582763447}
   - component: {fileID: 7005072685582763445}
   - component: {fileID: 7005072685582763446}
+  - component: {fileID: 3485713817663677067}
   m_Layer: 0
   m_Name: Spas12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685582763447
 Transform:
   m_ObjectHideFlags: 0
@@ -4366,6 +4575,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &3485713817663677067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685582763448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685600175626
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,13 +4608,14 @@ GameObject:
   - component: {fileID: 7005072685600175625}
   - component: {fileID: 7005072685600175623}
   - component: {fileID: 7005072685600175624}
+  - component: {fileID: 8705038762914405585}
   m_Layer: 0
   m_Name: m16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685600175625
 Transform:
   m_ObjectHideFlags: 0
@@ -4486,6 +4718,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &8705038762914405585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685600175626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685608444473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4615,13 +4869,14 @@ GameObject:
   - component: {fileID: 7005072685671285012}
   - component: {fileID: 7005072685671285010}
   - component: {fileID: 7005072685671285011}
+  - component: {fileID: 4597831174942280739}
   m_Layer: 0
   m_Name: icr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685671285012
 Transform:
   m_ObjectHideFlags: 0
@@ -4724,6 +4979,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &4597831174942280739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685671285013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685762177149
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,13 +5012,14 @@ GameObject:
   - component: {fileID: 7005072685762177148}
   - component: {fileID: 7005072685762177146}
   - component: {fileID: 7005072685762177147}
+  - component: {fileID: 7050877015705035943}
   m_Layer: 0
   m_Name: awp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685762177148
 Transform:
   m_ObjectHideFlags: 0
@@ -4844,6 +5122,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &7050877015705035943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685762177149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685781890063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,13 +5373,14 @@ GameObject:
   - component: {fileID: 7005072685937487154}
   - component: {fileID: 7005072685937487152}
   - component: {fileID: 7005072685937487153}
+  - component: {fileID: 3028325830461380150}
   m_Layer: 0
   m_Name: sawed_off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072685937487154
 Transform:
   m_ObjectHideFlags: 0
@@ -5182,6 +5483,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &3028325830461380150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072685937487155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072685941735597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5255,13 +5578,14 @@ GameObject:
   - component: {fileID: 7005072686021328402}
   - component: {fileID: 7005072686021328400}
   - component: {fileID: 7005072686021328401}
+  - component: {fileID: 4867904379252621468}
   m_Layer: 0
   m_Name: colt_m1911 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686021328402
 Transform:
   m_ObjectHideFlags: 0
@@ -5364,6 +5688,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &4867904379252621468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686021328403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686052928150
 GameObject:
   m_ObjectHideFlags: 0
@@ -5437,13 +5783,14 @@ GameObject:
   - component: {fileID: 7005072686098311832}
   - component: {fileID: 7005072686098311830}
   - component: {fileID: 7005072686098311831}
+  - component: {fileID: 5198169051095410571}
   m_Layer: 0
   m_Name: ak-47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686098311832
 Transform:
   m_ObjectHideFlags: 0
@@ -5546,6 +5893,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &5198169051095410571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686098311833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686138469159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5557,13 +5926,14 @@ GameObject:
   - component: {fileID: 7005072686138469158}
   - component: {fileID: 7005072686138469156}
   - component: {fileID: 7005072686138469157}
+  - component: {fileID: 6504077476341640667}
   m_Layer: 0
   m_Name: tompson
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686138469158
 Transform:
   m_ObjectHideFlags: 0
@@ -5666,6 +6036,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &6504077476341640667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686138469159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686267094094
 GameObject:
   m_ObjectHideFlags: 0
@@ -5677,13 +6069,14 @@ GameObject:
   - component: {fileID: 7005072686267094093}
   - component: {fileID: 7005072686267094091}
   - component: {fileID: 7005072686267094092}
+  - component: {fileID: 7353654833125948443}
   m_Layer: 0
   m_Name: nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686267094093
 Transform:
   m_ObjectHideFlags: 0
@@ -5786,6 +6179,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &7353654833125948443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686267094094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686292426214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5797,13 +6212,14 @@ GameObject:
   - component: {fileID: 7005072686292426213}
   - component: {fileID: 7005072686292426211}
   - component: {fileID: 7005072686292426212}
+  - component: {fileID: 4681811957496532518}
   m_Layer: 0
   m_Name: mpl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686292426213
 Transform:
   m_ObjectHideFlags: 0
@@ -5906,6 +6322,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &4681811957496532518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686292426214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686293219085
 GameObject:
   m_ObjectHideFlags: 0
@@ -5917,13 +6355,14 @@ GameObject:
   - component: {fileID: 7005072686293219084}
   - component: {fileID: 7005072686293219082}
   - component: {fileID: 7005072686293219083}
+  - component: {fileID: 4480361737907227624}
   m_Layer: 0
   m_Name: five_seven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686293219084
 Transform:
   m_ObjectHideFlags: 0
@@ -6026,6 +6465,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &4480361737907227624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686293219085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686363339432
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,13 +6529,14 @@ GameObject:
   - component: {fileID: 7005072686407864709}
   - component: {fileID: 7005072686407864707}
   - component: {fileID: 7005072686407864708}
+  - component: {fileID: 2717053287364778504}
   m_Layer: 0
   m_Name: Olympia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686407864709
 Transform:
   m_ObjectHideFlags: 0
@@ -6177,6 +6639,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &2717053287364778504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686407864710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686419152594
 GameObject:
   m_ObjectHideFlags: 0
@@ -6188,13 +6672,14 @@ GameObject:
   - component: {fileID: 7005072686419152593}
   - component: {fileID: 7005072686419152623}
   - component: {fileID: 7005072686419152592}
+  - component: {fileID: 550080958549998366}
   m_Layer: 0
   m_Name: dragunov
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686419152593
 Transform:
   m_ObjectHideFlags: 0
@@ -6297,6 +6782,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &550080958549998366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686419152594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686455094878
 GameObject:
   m_ObjectHideFlags: 0
@@ -6308,13 +6815,14 @@ GameObject:
   - component: {fileID: 7005072686455094877}
   - component: {fileID: 7005072686455094875}
   - component: {fileID: 7005072686455094876}
+  - component: {fileID: 1464886254393512756}
   m_Layer: 0
   m_Name: mp5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686455094877
 Transform:
   m_ObjectHideFlags: 0
@@ -6417,6 +6925,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &1464886254393512756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686455094878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686466940243
 GameObject:
   m_ObjectHideFlags: 0
@@ -6522,13 +7052,14 @@ GameObject:
   - component: {fileID: 7005072686707568849}
   - component: {fileID: 7005072686707568879}
   - component: {fileID: 7005072686707568848}
+  - component: {fileID: 1859238255416495177}
   m_Layer: 0
   m_Name: Stakeout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7005072686707568849
 Transform:
   m_ObjectHideFlags: 0
@@ -6631,6 +7162,28 @@ MonoBehaviour:
   maxReserveAmmo: 0
   isWeaponUpgraded: 0
   weaponSprite: {fileID: 0}
+--- !u!114 &1859238255416495177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005072686707568850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7005072686723798127
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerSoundsAndExtras : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerSoundsAndExtras : MonoBehaviour
     [Header("Variables")]
     public bool canPlayerInteract = true;
     public int playerScore = 500;
+    public Transform weaponsHolder;
 
     private void OnTriggerStay(Collider other)
     {

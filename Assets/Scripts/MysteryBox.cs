@@ -46,6 +46,10 @@ public class MysteryBox : MonoBehaviour
 
     private void Start()
     {
+        if(playersHolder == null)
+        {
+            playersHolder = GameObject.FindGameObjectWithTag("PlayersHolder");
+        }
         purchaseStringCostPart = StaticVariables.mysteryBoxCost.ToString();
         source = transform.GetComponent<AudioSource>();
         levelManager = GameObject.Find("LevelManager");

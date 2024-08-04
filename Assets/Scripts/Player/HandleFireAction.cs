@@ -69,10 +69,6 @@ public class HandleFireAction : MonoBehaviour
     private readonly bool canReload = true;
     private readonly bool canThrowGranade = true;
 
-    [Header("Testing")]
-    public TMP_Text debugger;
-    public GameObject player;
-
     private void Start()
     {
         if (!StaticVariables.isSoloGame)
@@ -98,8 +94,6 @@ public class HandleFireAction : MonoBehaviour
             inventory.playerWeapons.Add(primaryHand.transform.GetChild(0).gameObject);
         }
         weaponEmpty = transform.GetChild(1).gameObject;
-
-        player = transform.parent.parent.gameObject;
 
         SetPlayerControls();
     }
