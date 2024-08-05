@@ -4658,7 +4658,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 576c88245c00c56468604b3796441cb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4695,7 +4695,7 @@ MonoBehaviour:
   color1: {r: 0.09999991, g: 1, b: 1, a: 0.21176471}
   color2: {r: 0, g: 0.4599998, b: 1, a: 0}
   speed: 0.6
-  size: 15
+  size: 20.5
   skew: 0
   shear: 1
   fade: 0
